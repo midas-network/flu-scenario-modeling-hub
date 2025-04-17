@@ -1,0 +1,17 @@
+{
+    "schema_version":"https://raw.githubusercontent.com/hubverse-org/schemas/main/v5.0.0/admin-schema.json",
+    "name": "Flu Scenario Modeling Hub",
+    "maintainer": "Flu Scenario Modeling Hub Coordination Team",
+    "contact": {
+        "name": "Flu Scenario Modeling Hub Coordination Team",
+        "email": "scenariohub@midasnetwork.us"
+    },
+    "repository": {
+        "host": "github",
+        "owner": "midas-network",
+        "name": "flu-scenario-modeling-hub"
+    },
+    "file_format":["parquet"],
+    "timezone": "US/Eastern",
+    "model_output_dir": "model-output"
+}
