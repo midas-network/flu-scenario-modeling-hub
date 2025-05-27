@@ -15,6 +15,7 @@ jobs:
         sparse-checkout: |
               .github
               src
+              auxiliary-data/target-data_archive
               auxiliary-data/data-locations
               target-data
 
