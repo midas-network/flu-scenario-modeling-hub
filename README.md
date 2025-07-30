@@ -55,8 +55,7 @@ for submission and required file formats can be found
 [here](./model-output/README.md).
 
 
-## Influenza Round 1 2025-26: Vaccine Coverage - Vaccine impact and pre-season 
-projections for the 2025-26 season
+## Influenza Round 1 2025-26: Vaccine Coverage - Vaccine impact and pre-season projections for the 2025-26 season
 
 
 The primary goal of Round 1 of 2025-26  is to evaluate the impact of flu 
@@ -86,8 +85,7 @@ consistent with the long-term behavior of influenza (eg, the last ~20 years of
 disease burden, timing, and effective transmissibility) and the recent past 
 (ie, the amount of immunity accumulated in the last season, or recent seasons 
 if relevant).** Teams can calibrate their model to a range of historical 
-influenza epidemics for multiple past seasons (eg,  
-[dashboard of past seasons’ impacts](https://www.cdc.gov/flu-burden/php/data-vis/past-seasons.html)), 
+influenza epidemics for multiple past seasons (eg, [dashboard of past seasons’ impacts](https://www.cdc.gov/flu-burden/php/data-vis/past-seasons.html)), 
 or rely on relevant [publications](https://www.pnas.org/doi/pdf/10.1073/pnas.1415012112). 
 For teams looking for guidance, the maximum Re for seasonal flu has ranged 
 between 1.1 and 1.4 in recent years. Conceptually, transmissibility at the 
