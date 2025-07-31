@@ -397,7 +397,7 @@ abstract.**
 | Scenario B. Low vaccine coverage               | lowVax   | B-2025-07-29 |
 | Scenario C. Counterfactual no-vaccine          | noVax    | C-2025-07-29 |
 
-- **Due date**: Tuesday Sep 2, 2025
+- **Due date**: Friday Sep 5, 2025
 - **End date for fitting data**:  Between Saturday July 5, 2025 and Saturday 
   Aug 9, 2025
 - **Start date for scenarios**: Sunday Aug 10, 2025 (first date of simulated 
