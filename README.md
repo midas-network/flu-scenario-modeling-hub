@@ -303,7 +303,7 @@ Each trajectory should be tagged by the proportion of susceptibles on Oct 1,
 
 - Weekly reported state-level incident hospitalizations, will be based on the 
   HHS/NHSN COVID and flu 
-  [reporting system]([https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data)). 
+  [reporting system](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data). 
   This dataset has previously been updated daily and covers 2020-2025. Weekly 
   hospitalizations should be based on the 
   “previous_day_admission_influenza_confirmed” variable, without any adjustment 
