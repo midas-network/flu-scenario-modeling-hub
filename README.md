@@ -197,7 +197,7 @@ in 2023-24), with 35% correction down in individuals under 65 yrs to match
 scenario B assumptions. The 35% reductions have been applied to each 
 jurisdiction and age group under 65 yrs for scenario B. I.e., if Alabama 
 reported 50% coverage in age group 18-64 in 2023-24, the assumed coverage in 
-this age group is 50% in scenario A and  50*0.65=32.5% in scenario B. The 
+this age group is 50% in scenario A and  50\*0.65=32.5% in scenario B. The 
 timing of vaccination and relative differences between age groups and states 
 will proceed similarly to past years, which has been taken into account in the 
 vaccination file that we provide for the 2025-26 season. In summary, coverage 
@@ -303,7 +303,7 @@ Each trajectory should be tagged by the proportion of susceptibles on Oct 1,
 
 - Weekly reported state-level incident hospitalizations, will be based on the 
   HHS/NHSN COVID and flu 
-  [reporting system](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data). 
+  [NHSN Weekly Hospital Respiratory Dataset](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data). 
   This dataset has previously been updated daily and covers 2020-2025. Weekly 
   hospitalizations should be based on the 
   “previous_day_admission_influenza_confirmed” variable, without any adjustment 
@@ -454,7 +454,7 @@ folder, with the date the data was archived append to the filename.
 ### Hospitalization
 
 Weekly Hospital Respiratory Data (HRD) Metrics by Jurisdiction from
-the [National Healthcare Safety Network (NHSN)](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data) will be used for incidence hospitalization
+the [NHSN Weekly Hospital Respiratory Dataset](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data) will be used for incidence hospitalization
 target. The data are weekly. 
 
 The target to be projected is confirmed influenza hospital admissions, reported 
