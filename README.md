@@ -183,7 +183,7 @@ reports an adjusted VE of 31% (-7-55%) against community-acquired influenza
 infection, which includes mild and transient illnesses.
 
 **Assumptions regarding VE impact on infection and transmission should be 
-reported in the abstract meta-data. **
+reported in the abstract meta-data.**
 
 #### Vaccination coverage assumptions:
 
