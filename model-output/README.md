@@ -45,11 +45,13 @@ For more information on the metadata file format, please consult the associated
 ## Date/Epiweek information
 
 For week-ahead scenarios, we will use the specification of epidemiological
-weeks (EWs) [defined by the US CDC](https://ndc.services.cdc.gov/wp-content/uploads/MMWR_Week_overview.pdf)
+weeks (EWs) 
+[defined by the US CDC](https://ndc.services.cdc.gov/wp-content/uploads/MMWR_Week_overview.pdf)
 which run Sunday through Saturday.
 
 There are standard software packages to convert from dates to epidemic weeks
-and vice versa. E.g. [MMWRweek](https://cran.r-project.org/web/packages/MMWRweek/) 
+and vice versa. E.g. 
+[MMWRweek](https://cran.r-project.org/web/packages/MMWRweek/) 
 for R and [pymmwr](https://pypi.org/project/pymmwr/) and 
 [epiweeks](https://pypi.org/project/epiweeks/) for python.
 
@@ -77,15 +79,16 @@ information on the [parquet.apache.com](https://parquet.apache.org/) website.
 The "arrow" library can be used to read/write the files in 
 [Python](https://arrow.apache.org/docs/python/parquet.html) and 
 [R](https://arrow.apache.org/docs/r/index.html).
-Other tools are also accessible, for example [parquet-tools](https://github.com/hangxie/parquet-tools)
+Other tools are also accessible, for example 
+[parquet-tools](https://github.com/hangxie/parquet-tools)
 
 For example, in R:
 ```r
 # To write "parquet" file format:
-filename <- ”path/YYYY-MM-DD-team_model.parquet”
+filename <- ”path/model-output/team-model/YYYY-MM-DD-team_model.parquet”
 arrow::write_parquet(df, filename)
 # with "gz compression"
-filename <- ”path/YYYY-MM-DD-team_model.gz.parquet”
+filename <- ”path/model-output/team-model/YYYY-MM-DD-team_model.gz.parquet”
 arrow::write_parquet(df, filename, compression = "gzip", compression_level = 9)
 
 # To read "parquet" file format:
@@ -118,7 +121,7 @@ aggregation of the team and model abbreviation name.
 
 For example, in R:
 ```R
-team_folder <- ”path/data-processed/<team_model>/”
+team_folder <- ”path/model-output/<team_model>/”
 
 # Without compression
 arrow::write_dataset(df, team_folder, partitioning = c("origin_date", "target"),
@@ -127,7 +130,8 @@ arrow::write_dataset(df, team_folder, partitioning = c("origin_date", "target"),
 
 # With GZIP Compression
 arrow::write_dataset(df, team_folder, partitioning = c("origin_date", "target"),
-                     hive_style = FALSE, compression = "gzip", compression_level = 9,
+                     hive_style = FALSE, compression = "gzip", 
+                     compression_level = 9,
                      basename_template = "YYYY-MM-DD-team_model{i}.gz.parquet")
 ```
 
@@ -136,7 +140,7 @@ For example, in Python:
 ```Py
 import pyarrow.dataset as ds
 
-team_folder <- ”path/data-processed/<team_model>/”
+team_folder <- ”path/model-output/<team_model>/”
 
 
 # Without compression
@@ -145,18 +149,19 @@ ds.write_dataset(table, team_folder, partitioning=["origin_date", "target"],
                  basename_template="YYYY-MM-DD-team_model{i}.parquet")
 
 # Compression options
-fs = ds.ParquetFileFormat().make_write_options(compression='gzip', compression_level=9)
+fs = ds.ParquetFileFormat().make_write_options(compression='gzip', 
+                                               compression_level=9)
 # With GZIP Compression
 ds.write_dataset(table, team_folder, partitioning=["origin_date", "target"],
                  format="parquet", partitioning_flavor=None, file_options=fs,
                  basename_template="YYYY-MM-DD-team_model{i}.gz.parquet")
 ```
 
-Please note that the `hive_style` or `partitioning_flavor` should be set to `FALSE` or `None`,
-so all the teams have the same output style. 
+Please note that the `hive_style` or `partitioning_flavor` should be set to 
+`FALSE` or `None`, so all the teams have the same output style. 
 
-The submission file columns used for the partitioning (`origin_date` and `target`) should not 
-be present in the `.parquet` file. 
+The submission file columns used for the partitioning (`origin_date` and 
+`target`) should not be present in the `.parquet` file. 
 
 ---
 
@@ -185,17 +190,17 @@ a particular date for a particular target.
 
 |Column Name|Accepted Format|
 |:---:|:---:|
-|`origin_date`|character, date (datetime not accepted)|
-|`scenario_id`|character|
-|`target`|character|
-|`horizon`|numeric, integer|
-|`location`|character|
-|`age_group`|character|
-|`output_type`|character| 
-|`output_type_id`|numeric, character, logical (if all `NA`)| 
-|`value`|numeric|
-|`run_grouping`|numeric, integer|
-|`stochastic_run`|numeric, interger|
+| `origin_date`    | character, date (datetime not accepted)   |
+| `scenario_id`    | character                                 |
+| `target`         | character                                 |
+| `horizon`        | numeric, integer                          |
+| `location`       | character                                 |
+| `age_group`      | character                                 |
+| `output_type`    | character                                 | 
+| `output_type_id` | numeric, character, logical (if all `NA`) | 
+| `value`          | numeric                                   |
+| `run_grouping`   | numeric, integer                          |
+| `stochastic_run` | numeric, integer                          |
 
 
 ### `origin_date`
@@ -212,7 +217,8 @@ The "origin_date" and date in the filename should correspond.
 ### `scenario_id`
 
 The standard scenario id should be used as given in in the scenario
-description in the [main Readme](https://github.com/midas-network/flu-scenario-modeling-hub). 
+description in the 
+[main Readme](https://github.com/midas-network/flu-scenario-modeling-hub). 
 Scenario IDs include a captitalized letter and date as YYYY-MM-DD, e.g.,
 `A-2020-12-22`.
 
@@ -220,10 +226,10 @@ Scenario IDs include a captitalized letter and date as YYYY-MM-DD, e.g.,
 ### `target`
 
 The submission can contain multiple output type information: 
-- From 100 to 300 representative trajectories from the model simulations.
+- Representative trajectories from the model simulations.
   We will call this format "sample" type output. For more information, please
   consult the [sample](./README.md#sample) section.
-- A set of quantiles with an optional "mean" value for all the tarquets.
+- A set of quantiles for all the tarquets.
   We will call this format "quantile" type output. For more information, 
   please consult the [quantile](./README.md#quantile) section. 
 - A cumulative distribution function for the peak timing target. We will 
@@ -236,11 +242,15 @@ The requested targets are (for `"sample"` type output):
 
 Optional target:
 
+- sample:
+    - weekly incident emergency department visit
 - quantile:
     - cumulative deaths (US level only)
     - cumulative incident hospitalizations
+    - cumulative incident emergency department visit
     - weekly incident deaths (US level only)
     - weekly incident hospitalizations
+    - weekly incident emergency department visit
     - peak size hospitalizations
 - cdf:
     - weekly peak timing hospitalization
@@ -248,8 +258,10 @@ Optional target:
 Values in the `target` column must be one of the following character strings:
 - `"inc death"`  
 - `"inc hosp"`
+- `"inc ed visit"`
 - `"cum death"`  
 - `"cum hosp"`
+- `"cum ed visit"`
 - `"peak size hosp"`
 - `"peak time hosp"`
 
@@ -283,6 +295,20 @@ hospitalized cases, as reported by the NHSN and available on
 [data.cdc](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data).
 
 
+#### inc ed visit
+
+This target is the incident (weekly) number of emergency department visit 
+predicted by the model during the week that is N weeks after `origin_date`. 
+
+A week-ahead scenario should represent the total number of new hospitalized
+cases reported during a given epiweek (from Sunday through Saturday,
+inclusive).
+
+Predictions for this target will be evaluated compared to the number of new
+emergency department visit, as reported by the NSSP and available on 
+[data.cdc](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data).
+
+
 #### cum death
 
 This target is the cumulative number of deaths predicted by the model during 
@@ -300,6 +326,17 @@ after `origin_date` (since start of the simulation).
 
 A week-ahead scenario should represent the cumulative number of hospitalized
 cases reported on the Saturday of a given epiweek.
+
+
+#### cum ed visit 
+
+This target is the cumulative mumber of emergency visit department visit
+predicted by the model during the week that is N weeks after `origin_date` 
+(since start of the simulation). 
+
+A week-ahead scenario should represent the cumulative number of emergency 
+department visit reported on the Saturday of a given epiweek.
+
 
 #### peak time hosp
 
@@ -426,7 +463,7 @@ Both columns should only contain integer number.
 The submission file is expected to have 100 simulation samples 
 (or trajectories) for each "group". 
 
-For round 18, it is required to have the trajectories grouped at least by 
+For example, if a round is required to have the trajectories grouped at least by 
 `"age_group"` and `"horizon"`, so it is required that the combination of 
 the `run_grouping` and `stochastic_run` columns contains at least an unique
 identifier for each group containing all the possible value for `"age_group"` 
@@ -538,11 +575,52 @@ numbers between 0 and 1.
 ## Scenario validation
 
 To ensure proper data formatting, pull requests for new data or updates in
-data-processed/ will be automatically validated.
+`model-output/` and `model-metadata/` are automatically validated.
+
 
 ### Pull request scenario validation
 
-When a pull request is submitted, the data are automatically validated. 
-The intent for these tests are to validate the requirements above and 
-all checks are specifically enumerated.
+When a pull request is submitted, the data are automatically validated.
+The intent for these tests are to validate the requirements above and
+all checks are specifically enumerated on the
+[SMH website](https://scenariomodelinghub.org/documentation/validation.html).
+
+Please 
+[let us know](https://github.com/midas-network/flu-scenario-modeling-hub/issues) if
+the wiki is inaccurate.
+
+### Workflow
+
+When a pull request is submitted, the validation will be 
+automatically triggered.
+
+- If the pull request (PR) contains update abstract file(s):
+    - These files are manually validated, the automatic validation
+    will only returns a message indicating it did not run any
+    validation. 
+
+- If the PR contains model output and/or model metadata submission file(s). 
+The validation automatically runs and output a message.
+
+    - The validation has 3 possible output:
+        - "Error" (red cross): the validation has failled and returned a message 
+        indicating the error(s). The error(s) should be fixed to have the PR 
+        accepted
+        - "Warning" (red !): the PR will fail but it can be accepted. It is 
+        necessary for the submitting team to validate if the warning(s) is 
+        expected or not before merging the PR. If all warning are expected and
+        accepted, the PR will be merged without needed modification on those
+        warning. 
+        - "Success" (green check): the validation did not found any issue and 
+        returns a message indicating that the validation is a success
+
+If any issues or questions on a PR, please feel free to send them in the PR via
+comments.
+
+#### Run checks locally
+
+To run these checks locally rather than waiting for the results from a pull
+request, the package 
+[SMHvalidation](https://github.com/midas-network/SMHvalidation) contains 
+multiple documentation and vignettes. 
 
