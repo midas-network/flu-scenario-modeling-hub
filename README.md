@@ -494,6 +494,17 @@ the Flusurv-NET data estimates ~15% fewer hospitalizations nationally than the
 NHSN system based on 2021-22 data; however these differences may vary during the 
 2025-26 season.
 
+### Emergency Department Visit
+
+Weekly Emergency Department Visit from the National Syndromic Surveillance Program:
+
+- [NSSP Emergency Department Visits by demographic category](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visits-COVID-19-Flu-RSV-/7xva-uux8/about_data)
+since Oct 2022.
+- [NSSP Emergency Department Visits by state](https://data.cdc.gov/Public-Health-Surveillance/2023-Respiratory-Virus-Response-NSSP-Emergency-Dep/vutn-jzwm/about_data) since Oct 2023.
+
+The data are filter to keep only information about `"Influenza"`.
+
+
 ## Additional resources:
 
 - Delphi CMU group: See [https://delphi.cmu.edu/flu/](https://delphi.cmu.edu/flu/)
