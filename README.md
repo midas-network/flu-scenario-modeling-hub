@@ -270,9 +270,9 @@ conditions.
 
 - Age-stratification is required. 
 - Required age-strata:
-    - 0-4, 5-17, 18-49, 50-64, and 65+ (or some aggregation of this, like 
-    18-64, etc.). Most of the burden on hospitalization and deaths come from the 
-    0-4 and 65+ age groups.
+    - overall population `0-130`
+    - `0-4`, `5-17`, `18-49`, `50-64`, and 65+ (`65-130`). Most of the burden 
+      on hospitalization and deaths come from the 0-4 and 65+ age groups.
 
 #### Projection Period
 
