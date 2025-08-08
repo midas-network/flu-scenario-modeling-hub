@@ -269,8 +269,8 @@ conditions.
 #### Age groups
 
 - Age-stratification is required. 
-- Required age-strata:
-    - overall population `0-130`
+- Age-strata:
+    - Required overall population `0-130`
     - `0-4`, `5-17`, `18-49`, `50-64`, and 65+ (`65-130`). Most of the burden 
       on hospitalization and deaths come from the 0-4 and 65+ age groups.
 

@@ -414,11 +414,9 @@ Accepted values in the  `age_group` column are:
 - `"65-130"`
 - `"0-130"` (required)
 
-The `age_group` are required. If the submissions files contain 
-projections for the overall population, please use `"0-130"` as age-group.
+The overall population `age_group` (`0-130`) is required. 
 
 **For the `peak` targets, only the age-group `"0-130"` is required.**
-
 
 ### `output_type`
 
