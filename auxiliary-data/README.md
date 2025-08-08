@@ -10,6 +10,7 @@ The data are organized in multiple sections:
 - [Target Data Archive](./README.md#target-data-archive)
 - [Rounds](./README.md#rounds)
 - [Additional Resources](./README.md#additional-resources)
+    - [List of links of interest](./README.md#list-of-links-of-interest)
     - [MIDAS Network Curated Archive](./README.md#midas-network-curated-archive)
     
 If there any issues, or questions, please feel free to 
