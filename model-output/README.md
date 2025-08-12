@@ -232,7 +232,7 @@ The submission can contain multiple output type information:
     - For some rounds, a tag for each trajectority will be used and register
       as an additional target with a "sample" type output format. For more 
       information, please consult the 
-      [sample-level tag](./README.md##sample-level-tag) section.
+      [sample-level tag](./README.md#sample-level-tag) section.
 - A set of quantiles for all the tarquets.
   We will call this format "quantile" type output. For more information, 
   please consult the [quantile](./README.md#quantile) section. 
