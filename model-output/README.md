@@ -580,7 +580,7 @@ end of the simulation, and $S0_k$ is the initial proportion susceptible to
 
 <ins>If the model has more than one of the above categories (ie age and  partial immunity)</ins>
 
-$S0$needs to be calculated successively for each subcategory to arrive at an 
+$S0$ needs to be calculated successively for each subcategory to arrive at an 
 overall S0.
 
 
