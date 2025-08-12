@@ -261,6 +261,12 @@ Optional target:
     - peak size hospitalizations
 - cdf:
     - weekly peak timing hospitalization
+    
+For all targets expection of "peak" targets (peak size hospitalizations, 
+weekly peak timing hospitalization), optional age-stratification is recommended. 
+Overall population (`0-130`) is required, but additional age group is also 
+accepted. Please consult the [age_group](./README#age_group) section, for more 
+information.
 
 Values in the `target` column must be one of the following character strings:
 - `"inc hosp"`: weekly incident hospitalizations 
@@ -452,8 +458,11 @@ Accepted values in the  `age_group` column are:
 - `"50-64"`
 - `"65-130"`
 - `"0-130"` (required)
+Or any aggregation of the previous list, for example: "0-17". 
 
-The overall population `age_group` (`0-130`) is required. 
+The `age_group` are optional, however, the submission should contain at least 
+one age group: `0-130`, if multiples `age_group` are provided the overall 
+population should still be provided with the age group `0-130`. 
 
 **For the `peak` targets, only the age-group `"0-130"` is required.**
 
