@@ -229,6 +229,10 @@ The submission can contain multiple output type information:
 - Representative trajectories from the model simulations.
   We will call this format "sample" type output. For more information, please
   consult the [sample](./README.md#sample) section.
+    - For some rounds, a tag for each trajectority will be used and register
+      as an additional target with a "sample" type output format. For more 
+      information, please consult the 
+      [sample-level tag](./README.md##sample-level-tag) section.
 - A set of quantiles for all the tarquets.
   We will call this format "quantile" type output. For more information, 
   please consult the [quantile](./README.md#quantile) section. 
@@ -237,13 +241,16 @@ The submission can contain multiple output type information:
   the [cdf](./README.md#cdf) section.
 
 The requested targets are (for `"sample"` type output):
-- weekly incident deaths (US level only)
 - weekly incident hospitalizations 
+- S0, initial proportion of susceptible individuals at the start of simulations
 
 Optional target:
 
 - sample:
     - weekly incident emergency department visit
+    - weekly incident deaths (US level only)
+    - Initial proportion of susceptible individuals by (sub)type at the start 
+      of simulations
 - quantile:
     - cumulative deaths (US level only)
     - cumulative incident hospitalizations
@@ -256,14 +263,60 @@ Optional target:
     - weekly peak timing hospitalization
 
 Values in the `target` column must be one of the following character strings:
-- `"inc death"`  
-- `"inc hosp"`
-- `"inc ed visit"`
-- `"cum death"`  
-- `"cum hosp"`
-- `"cum ed visit"`
-- `"peak size hosp"`
-- `"peak time hosp"`
+- `"inc hosp"`: weekly incident hospitalizations 
+- `"S0"`: initial proportion of susceptible individuals at the start of 
+  simulations
+- `"inc ed visit"`: weekly incident emergency department visit
+- `"inc death"`:  weekly incident deaths (US level only)
+- `"S0_A"`, `"S0_B"`, `"S0_AH1"`, `"S0_AH3"`: Initial proportion of susceptible 
+  individuals by (sub)type at the start of simulations
+- `"cum death"`: cumulative deaths (US level only)
+- `"cum hosp"`: cumulative incident hospitalizations
+- `"cum ed visit"`: cumulative incident emergency department visit
+- `"peak size hosp"`: peak size hospitalizations
+- `"peak time hosp"`: weekly peak timing hospitalization
+
+
+#### inc hosp
+
+This target is the incident (weekly) number of hospitalized cases predicted by
+the model during the week that is N weeks after `origin_date`. 
+
+A week-ahead scenario should represent the total number of new hospitalized
+cases reported during a given epiweek (from Sunday through Saturday,
+inclusive).
+
+Predictions for this target will be evaluated compared to the number of new
+hospitalized cases, as reported by the NHSN and available on 
+[data.cdc](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data).
+
+
+#### S0
+
+This target is a tag denoting the initial proportion of individuals susceptible 
+to influenza infection on the first day of a given simulation, i.e. on 
+`origin_date`. The proportion should be between 0 and 1. Each **sample**
+trajectory should have a corresponding tag.
+
+We do not expect a full time series for the tag, since it is a value determined 
+at the start of simulation. The horizon column associated with this value 
+should be set to `NA`. 
+
+There will be no evaluation for this target. 
+
+
+#### S0_A, S0_B, S0_AH1, S0_AH3  
+
+These targets are optional tags denoting the initial proportion of individuals 
+susceptible to influenza A infection (respectively influenza B, 
+influenza A/H1N1, influenza A/H3N2) on the first day of a given simulation, 
+i.e. on `origin_date`.
+
+We do not expect a full time series for the tag, since it is a value determined 
+at the start of simulation. The horizon column associated with this value 
+should be set to `NA`. 
+
+There will be no evaluation for this target.
 
 
 #### inc death
@@ -279,20 +332,6 @@ Predictions for this target will be evaluated compared to the number of new
 deaths, as recorded by the National Center for Health Statistics (NCHS) as 
 distributed by the
 [FluView Interactive - Mortality CDC dashboard](https://gis.cdc.gov/grasp/fluview/mortality.html). 
-
-
-#### inc hosp
-
-This target is the incident (weekly) number of hospitalized cases predicted by
-the model during the week that is N weeks after `origin_date`. 
-
-A week-ahead scenario should represent the total number of new hospitalized
-cases reported during a given epiweek (from Sunday through Saturday,
-inclusive).
-
-Predictions for this target will be evaluated compared to the number of new
-hospitalized cases, as reported by the NHSN and available on 
-[data.cdc](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data).
 
 
 #### inc ed visit
@@ -478,6 +517,73 @@ For example:
 ||||||||||||
 
 
+##### Sample-level tag 
+
+The tag should be the same across paired trajectories, and across 
+other targets outcomes (for example incident hospitalization, death) resulting 
+from the same set of trajectories. 
+
+The model output file format should follow the same format as other target using
+`sample` output type
+
+For example:
+
+|origin_date|scenario_id|location|target|horizon|age_group|output_type|output_type_id|run_grouping|stochastic_run|value|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|2024-04-28|A-2024-03-01|US|inc hosp|1|0-64|sample|NA|1|1||
+|2024-04-28|A-2024-03-01|US|inc hosp|2|0-64|sample|NA|1|1||
+|2024-04-28|A-2024-03-01|US|inc hosp|3|0-64|sample|NA|1|1||
+|2024-04-28|A-2024-03-01|US|S0|NA|0-64|sample|NA|1|1||
+||||||||||||
+|2024-04-28|A-2024-03-01|US|inc hosp|1|0-64|sample|NA|2|1||
+|2024-04-28|A-2024-03-01|US|inc hosp|2|0-64|sample|NA|2|1||
+|2024-04-28|A-2024-03-01|US|S0|NA|0-64|sample|NA|2|1||
+||||||||||||
+
+###### **Initial Susceptibility Conditions (S0)**
+
+<ins>If the model has age structure</ins>
+
+Take the weighted initial susceptibility  proportion of each age group, where 
+the weights represent the population size proportion of each age group
+
+$$S0 = \sum_i[(w_i∗S0_i)]$$ 
+
+where $S0_i$ is the initial proportion of susceptible individuals in age 
+category $i$, and $w_i=\frac{Pop_i}{\sum_j[(Pop_j)]}$.
+ 
+<ins>If the model has multiple categories of partial susceptibility</ins>
+
+Take the weighted initial proportion of individuals in each susceptibility 
+category, where the weights represent the reduction in probability of infection
+in each category relative to fully susceptible
+
+$$S0 = \sum_j[(v_j∗S0_j)]$$
+
+where $S0_j$ is the initial proportion of individuals in susceptibility 
+category $j$, and $v_j$  is the susceptibility reduction in category $j$ 
+compared to fully susceptible ($v_j=1$ for fully susceptible, $0$ for fully 
+immune/recovered).
+
+<ins>If the model has explicit (sub)types</ins>
+
+Take the weighted initial proportion of individuals who are susceptible to each 
+subtype, where the weights represent the total infection proportions attributed 
+to each subtype at the end of the simulation.
+
+$$S0 = \sum_k[(cump_k∗S0_k)]$$
+
+where $k$ denotes flu (sub)type (A/B, or H1/H3/B depending on the model) , 
+$cump_k$ is the cumulative proportion of infections with (sub)type $k$ at the 
+end of the simulation, and $S0_k$ is the initial proportion susceptible to 
+(sub)type $k$.
+
+<ins>If the model has more than one of the above categories (ie age and  partial immunity)</ins>
+
+$S0$needs to be calculated successively for each subcategory to arrive at an 
+overall S0.
+
+
 #### `quantile` 
 
 Values in the `quantile` column are quantiles in the format
@@ -557,10 +663,10 @@ function (CDF) for the `target`,`horizon`, `location`, and `quantile` associated
 that row.
 
 
-#### Peak time hosp
+#### Peak time hosp & S0
 
-For the `peak time hosp` target, the values in the `value` column are non-negative 
-numbers between 0 and 1.  
+For the `peak time hosp` and all `S0` targets, the values in the `value` column 
+are non-negative numbers between 0 and 1.  
 
 
 ---

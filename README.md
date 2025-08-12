@@ -283,11 +283,13 @@ conditions.
 In this round, we will **require submission of 300-600 individual trajectories 
 for each target while submission of quantiles is optional**. As a result, 
 the only required targets for trajectories will be weekly incident 
-hospitalizations and weekly deaths. Estimates of cumulative counts can be 
-obtained from weekly trajectories and hence we do not require trajectories 
-for cumulative counts. Similarly peak targets (peak hospitalization magnitude 
-and peak timing) can be reconstructed from weekly trajectories. Teams who wish 
-to submit quantiles along with trajectories should provide quantiles for weekly 
+hospitalizations and associate trajectory-level tag to index inital 
+susceptibility conditions (S0). Additional indident death at national level, and
+emergency department visit are optionals. Estimates of cumulative counts can be 
+obtained from weekly trajectories and hence we do not require trajectories for 
+cumulative counts. Similarly peak targets (peak hospitalization magnitude and 
+peak timing) can be reconstructed from weekly trajectories. Teams who wish to 
+submit quantiles along with trajectories should provide quantiles for weekly 
 and cumulative counts, as well as for hospitalization peak size and peak timing. 
 
 We require that simulations are paired across time, geography, age group, 
@@ -312,6 +314,43 @@ Each trajectory should be tagged by the proportion of susceptibles on Oct 1,
   [has been posted here](https://github.com/midas-network/flu-scenario-modeling-hub_resources/blob/main/Rd1_datasets/HHS_flu_2020_2022_dataset.csv). 
   Note that the dataset was paused May-Nov 2024 so this period has notoriously 
   low reporting.
+  
+- No case targets
+
+- No infection target
+
+- All targets should be numbers of individuals, rather than rates.
+
+###### Defining a trajectory-level tag to index initial susceptibility conditions (S0)
+
+In this round of flu projections, we do not have an epidemiological scenario 
+axis so that all epidemiological uncertainty is at the discretion of modeling 
+teams. To allow for post-hoc comparison of uncertainty within and between models 
+and trajectories, we will assign a tag to each set of paired simulations based 
+on a key epidemic driver (where a set of paired simulations is a replicate 
+of a particular model simulation across the 3 vaccine coverage levels in 
+scenarios A-C). The tag will consist of **initial susceptibility to infection 
+proportion**, which is a relatively well defined parameter for mechanistic 
+approaches and an important driver of epidemic dynamics. 
+
+We define the trajectory-level tag, **overall S0, as the all-age proportion of 
+individuals who are susceptible to infection on the first day of simulations on 
+Aug 10, 2025**. Note that this is before vaccination takes place, so that S0 
+will be the same across all vaccine scenario levels even  if a model assumes 
+that vaccination reduces susceptibility.
+
+Submission of an overall S0 will be required, in the form of a new required 
+target (formatting guidelines in [model-output README](./model-output/)). This 
+overall S0 encapsulates susceptibility across different possible types of 
+model structures, including age groups, different levels of partial 
+susceptibility, subtype or strains, etc. Below we have provided guidance on 
+how to estimate overall S0 for models with different structures. Disaggregated 
+estimates of S0 (eg by age or subtype) can be also submitted as optional 
+targets along with overall S0, but only overall S0 is a required target. 
+
+
+###### Optional targets
+
 - Weekly national incident deaths, from the CDC multiplier model (i.e., true 
   mortality burden from the pyramid). These are real-time model estimates 
   updated weekly during the influenza season.  The model relies on influenza 
@@ -326,12 +365,6 @@ Each trajectory should be tagged by the proportion of susceptibles on Oct 1,
   from 2018-19 to 2024-25. Further, see 
   [here](https://www.cdc.gov/flu/about/burden/preliminary-in-season-estimates.htm) 
   for summary estimates for past seasons. 
-- No case target
-- No infection target
-- All targets should be numbers of individuals, rather than rates.
-
-
-###### Optional targets
 
 - Additional incidence target based on ED visits: Weekly reported state-level 
   incident ED visits for influenza 
@@ -341,8 +374,11 @@ Each trajectory should be tagged by the proportion of susceptibles on Oct 1,
   indicator of incidence, ie total ED visits for flu divided by total ED visits. 
   Data broken down by age groups are graphed 
   [here](https://www.cdc.gov/fluview/surveillance/2025-week-24.html#cdc_data_surveillance_section_2-outpatient-and-emergency-department-illness-surveillance).
+
 -  Additional targets if submitting quantiles in addition to trajectories:
     - Cumulative hospitalizations. Cumulative outcomes start at 0 at the start 
+      of projections, on Aug 10, 2025. This is similar to prior influenza rounds. 
+    - Cumulative deaths. Cumulative outcomes start at 0 at the start 
       of projections, on Aug 10, 2025. This is similar to prior influenza rounds. 
     - State-level peak hospitalizations.
     - State-level timing of peak hospitalizations.
