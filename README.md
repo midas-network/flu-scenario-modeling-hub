@@ -462,7 +462,7 @@ abstract.**
   a random sample of simulations, for others with larger numbers of 
   simulations, it may require weighted sampling. 
   We also require that each trajectory should be tagged by the proportion of 
-  susceptibles on Oct 1, 2025.
+  susceptible S0 on August 10, 2025.
 - Geographic scope: state-level and national projections
     - All states not required, US overall recommended.
 - Results: 
