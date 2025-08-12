@@ -578,7 +578,7 @@ $cump_k$ is the cumulative proportion of infections with (sub)type $k$ at the
 end of the simulation, and $S0_k$ is the initial proportion susceptible to 
 (sub)type $k$.
 
-<ins>If the model has more than one of the above categories (ie age and  partial immunity)</ins>
+<ins>If the model has more than one of the above categories (e.g. age and  partial immunity)</ins>
 
 $S0$ needs to be calculated successively for each subcategory to arrive at an 
 overall S0.
