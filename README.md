@@ -123,8 +123,16 @@ and antigenic changes (or related parameters), seasonality, and severity in
 the meta-data abstract. We will also calculate Re a posteriori from the 
 individual simulations for further analyses. To further facilitate comparison 
 between models and individual simulations, we also request that teams tag each 
-trajectory by the all-age immunity proportion (total individuals partially 
-immune/total population size) on Oct 1, 2025.**
+trajectory by S0, the all-age immunity proportion on the first day of 
+simulations, Aug 10, 2025 (total individuals fully or partially 
+susceptible/total population size)**. S0 will be submitted as a new required 
+target at the simulation level. Additional details on initial susceptibility
+by age or subtype (should the model have age or subtype structure) can also be 
+provided as optional S0 targets. 
+See [sample-level tag documentation](./model-output#initial-susceptibility-conditions-s0) 
+for details on calculation and formatting of S0.
+
+
 
 #### Calibration to past seasons:
 
@@ -268,11 +276,13 @@ conditions.
 
 #### Age groups
 
-- Age-stratification is required. 
+- Age-stratification is recommended. 
 - Age-strata:
     - Required overall population `0-130`
-    - `0-4`, `5-17`, `18-49`, `50-64`, and 65+ (`65-130`). Most of the burden 
-      on hospitalization and deaths come from the 0-4 and 65+ age groups.
+    - Recommended age-strata: `0-4`, `5-17`, `18-49`, `50-64`, and 65+ 
+      (`65-130`) (or some aggregation of this, like 18-64, etc.). 
+      Most of the burden on hospitalization and deaths come from 
+      the 0-4 and 65+ age groups.
 
 #### Projection Period
 
@@ -298,8 +308,10 @@ trajectory from scenario A should have a matched trajectory in scenarios
 B and C. Information on pairing structure will be gathered at the submission 
 stage.
 
-Each trajectory should be tagged by the proportion of susceptibles on Oct 1, 
-2025. This information should be provided at submission as an additional target.
+Each trajectory should be tagged by the proportion of susceptibles, S0, on 
+the first day of simulations, Aug 10, 2025. This information should be provided 
+at submission as an additional target.
+
 
 ##### Weekly target
 
