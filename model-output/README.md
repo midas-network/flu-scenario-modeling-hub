@@ -254,7 +254,6 @@ Optional target:
 - quantile:
     - cumulative deaths (US level only)
     - cumulative incident hospitalizations
-    - cumulative incident emergency department visit
     - weekly incident deaths (US level only)
     - weekly incident hospitalizations
     - weekly incident emergency department visit
@@ -278,7 +277,6 @@ Values in the `target` column must be one of the following character strings:
   individuals by (sub)type at the start of simulations
 - `"cum death"`: cumulative deaths (US level only)
 - `"cum hosp"`: cumulative incident hospitalizations
-- `"cum ed visit"`: cumulative incident emergency department visit
 - `"peak size hosp"`: peak size hospitalizations
 - `"peak time hosp"`: weekly peak timing hospitalization
 
@@ -342,15 +340,16 @@ distributed by the
 
 #### inc ed visit
 
-This target is the incident (weekly) number of emergency department visit 
-predicted by the model during the week that is N weeks after `origin_date`. 
+This target is the incident (weekly) percent of influenza emergency department 
+visit predicted by the model during the week that is N weeks after 
+`origin_date`. 
 
-A week-ahead scenario should represent the total number of new hospitalized
-cases reported during a given epiweek (from Sunday through Saturday,
-inclusive).
+A week-ahead scenario should represent the total percent of influenza 
+emergency department visit reported during a given epiweek (from Sunday through
+Saturday, inclusive).
 
-Predictions for this target will be evaluated compared to the number of new
-emergency department visit, as reported by the NSSP and available on 
+Predictions for this target will be evaluated compared to the percent of new
+influenza emergency department visit, as reported by the NSSP and available on 
 [data.cdc](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data).
 
 
@@ -371,16 +370,6 @@ after `origin_date` (since start of the simulation).
 
 A week-ahead scenario should represent the cumulative number of hospitalized
 cases reported on the Saturday of a given epiweek.
-
-
-#### cum ed visit 
-
-This target is the cumulative mumber of emergency visit department visit
-predicted by the model during the week that is N weeks after `origin_date` 
-(since start of the simulation). 
-
-A week-ahead scenario should represent the cumulative number of emergency 
-department visit reported on the Saturday of a given epiweek.
 
 
 #### peak time hosp
