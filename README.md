@@ -302,7 +302,7 @@ peak timing) can be reconstructed from weekly trajectories. Teams who wish to
 submit quantiles along with trajectories should provide quantiles for weekly 
 and cumulative counts, as well as for hospitalization peak size and peak timing. 
 
-We require that simulations are paired across time, geography, age group, 
+We require that simulations are paired across time, age group, 
 targets (deaths, hospitalizations, etc.) and vaccine coverage levels. Any 
 trajectory from scenario A should have a matched trajectory in scenarios 
 B and C. Information on pairing structure will be gathered at the submission 
