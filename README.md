@@ -196,7 +196,7 @@ reported in the abstract meta-data.**
 #### Vaccination coverage assumptions:
 
 We have provided weekly state-level coverage to use in **scenarios A-B** 
-[here](https://github.com/midas-network/flu-scenario-modeling-hub_resources/blob/main/Rd1_datasets/Age_Specific_Coverage_Flu_RD1_2022_23_Sc_A_B_C_D.csv) 
+[here](https://github.com/midas-network/flu-scenario-modeling-hub_resources/blob/main/Rd6_datasets/Age_Specific_Coverage_Flu_RD1_2025_26_Sc_A_B.csv) 
 for age groups: 0-4 yr, 5-12 yr, 13-17 yr, 0-17 yr, 18-49 yr, 50-64 yr, 65+ yr. 
 Projected coverage for scenarios A-B are based on vaccination rates reported in 
 2023-24, which is the most recent complete year of vaccination data. We provide 
