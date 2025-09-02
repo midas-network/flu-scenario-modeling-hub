@@ -1,0 +1,8 @@
+# Packages required for the truth data update (update 20250902)
+gh
+hubValidations
+jsonlite
+purrr
+remotes
+SMHvalidation >= 1.1.0.9000
+stringr

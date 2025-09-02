@@ -8,3 +8,4 @@ This folder stores code that is use in the Github Repository, including:
     - `target-data.R`: script using the utils function to extract, process,
        standardized and write the target-data output file in the expected
        folder.
+- Validation: functions called and used in the automatic validation of PR
