@@ -1,0 +1,35 @@
+team_name: "University of Texas at Austin"
+team_abbr: "UT"
+model_name: "UT-ImmunoSEIRS"
+model_abbr: "ImmunoSEIRS"
+model_contributors: [
+  {
+   "name": "Shraddha Ramdas Bandekar",
+    "affiliation": "The University of Texas at Austin",
+    "email": "shraddha.bandekar@austin.utexas.edu"
+  },
+  {
+    "name": "Kaiming Bi",
+    "affiliation": "University of Texas Health Science Center School of Public Health",
+    "email": "Kaiming.Bi@uth.tmc.edu"
+  },
+  {
+    "name": "Anass Bouchnita",
+    "affiliation": "The University of Texas at El Paso",
+    "email": "abouchnita@utep.edu"
+  },
+  {
+    "name": "Spencer J. Fox",
+    "affiliation": "Northern Arizona University",
+    "email": "spencer.fox@nau.edu"
+  },
+  {
+    "name": "Lauren Ancel Meyers",
+    "affiliation": "The University of Texas at Austin",
+    "email": "laurenmeyers@austin.utexas.edu"
+  }
+]
+license: "cc-by-4.0"
+methods: "We develop an age stratified model that explicitly tracks the immunity caused by natural infections and vaccination and its impact on the average chances of infection, hospitalization and death."
+model_version: "1.0"
+website_url: "https://covid-19.tacc.utexas.edu/"
