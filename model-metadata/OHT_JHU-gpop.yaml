@@ -1,0 +1,21 @@
+team_name: "One Health Trust and Johns Hopkins University"
+team_abbr: "OHT_JHU"
+model_name: "GREASYPOP"
+model_abbr: "gpop"
+model_contributors: [
+  {
+    "name": "Alexander Tulchinsky",
+    "affiliation": "One Health Trust",
+    "email": "tulchinsky@onehealthtrust.org"
+  },
+  {
+    "name": "Eili Klein",
+    "affiliation": "One Health Trust & Johns Hopkins School of Medicine",
+    "email": "eklein@jhu.edu"
+  }
+]
+website_url: "https://github.com/CDDEP-DC/GREASYPOP-CO"
+model_version: "2025-09-04"
+license: "CC-BY-4.0"
+methods: "We constructed synthetic populations for select US regions and conducted individual-based simulations on the resulting contact networks, then scaled the per-capita results to the national level."
+methods_long: "Re was not explicitly modeled but instead was a property of individuals' network connections (inferred from the synthetic population) and probability of infecting a connection. Infection probability was modeled with seasonality using a sine wave with a period of one year, and mean, amplitude, and phase set such that attack rates and peak timing fit the range of estimates from previous seasons. Projected state-level flu vaccination rates for age groups 0-17, 18-49, 50-64, and 65+ were combined with reported county-level covid19 vaccination rates to generate projected county-level flu vaccinations while maintaining the projected state-level totals. In the simulation, the corresponding number of synthetic individuals were vaccinated at each point in time based on their age and residence location. Transmission probability was modified by vaccine effectiveness against infection, which was sampled from a symmetrical triangular distribution between 15% and 35% following findings in Ohmit et al. (2013) and Grijalva et al. (2024) while maintaining fit to previous attack rates. Pre-existing immunity was assumed to be the same for all ages and was sampled from values between 23% and 38% using a scaled and recentered Beta(6,3) distribution, following reported values in Yang et al. (2015). Severity was modeled as separate hospitalization probabilities for age groups 0-64 and 65+, drawn from triangular distributions from 0.5%-1% and 10%-30%, respectively, to fit reported hospitalizations from previous seasons. Individual hospitalization probability was modified by vaccine effectiveness fixed at 50%. The synthetic population was constructed at census block group resolution from US census, job commute, and school enrollment data. Individuals were connected based on shared households, workplaces, and schools, and by geographic proximity. We simulated transmission and hospitalization in high-vaccination (Washington), medium-vaccination (Ohio), and low-vaccination (Alabama) states, and combined the results into national-level projections. See the linked github repo for details on synthetic population construction."
