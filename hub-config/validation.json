@@ -1,6 +1,6 @@
 {
   "2025-08-10": {
-    "n_decimal": 1,
+    "n_decimal": 5,
     "merge_sample_col": ["run_grouping", "stochastic_run"],
     "partition": ["origin_date", "target"]
   }
