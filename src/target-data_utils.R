@@ -156,16 +156,18 @@ standard_nhsn <- function(df, location2number, abbr2location,
   df <-
     dplyr::filter(df, !grepl("Region \\d+", .data[["state_abbr"]])) |>
     dplyr::mutate(date = as.Date(date),
-                  location = location2number[abbr2location[.data[["state_abbr"]]]],
-                  age_cat = dplyr::case_when(.data[["age_group"]] %in%
-                                               c("0-4", "5-17", "18-49",
-                                                 "50-64") ~ "0-64",
-                                             .data[["age_group"]] %in%
-                                               c("65-74", "75-130") ~ "65-130",
-                                             .data[["age_group"]] %in%
-                                               "0-130" ~ "0-130",
-                                             .data[["age_group"]] ==
-                                               "unknown" ~ NA)) |>
+                  location = 
+                    location2number[abbr2location[.data[["state_abbr"]]]],
+                  age_cat = 
+                    dplyr::case_when(.data[["age_group"]] == "0-4" ~ "0-4",
+                                     .data[["age_group"]] == "5-17" ~ "5-17",
+                                     .data[["age_group"]] == "18-49" ~ "18-49",
+                                     .data[["age_group"]] == "50-64" ~ "50-64",
+                                     .data[["age_group"]] %in% 
+                                       c("65-74", "75-130") ~ "65-130",
+                                     .data[["age_group"]] %in% "0-130" ~ 
+                                       "0-130",
+                                     .data[["age_group"]] == "unknown" ~ NA)) |>
     dplyr::summarise(observation = sum(.data[["observation"]]),
                      .by = c("date", "location", "age_cat")) |>
     dplyr::filter(!is.na(.data[["age_cat"]]), !is.na(.data[["observation"]])) |>
