@@ -30,7 +30,7 @@ model_contributors:
       "email": "utx5@cdc.gov",
     },
   ]
-license: "Apache-2.0, https://www.apache.org/licenses/LICENSE-2.0.html"
+license: "Apache-2.0"
 methods: "SEIS three strain ODE model with age structure, immune waning, and vaccine and infection history.  Model represents the US and is fit to hospitalization and subtype prevalence data."
 model_version: "2025-09-05"
 website_url: "https://github.com/cdcgov/DynODE"
