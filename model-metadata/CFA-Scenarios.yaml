@@ -1,0 +1,36 @@
+team_name: "CFA"
+team_abbr: "CFA"
+model_name: "Scenarios"
+model_abbr: "Scenarios"
+model_contributors:
+  [
+    {
+      "name": "Laura Albrecht",
+      "affiliation": "CDC Center for Forecasting and Outbreak Analytics",
+      "email": "zhw3@cdc.gov",
+    },
+    {
+      "name": "Elisha Are",
+      "affiliation": "CDC Center for Forecasting and Outbreak Analytics",
+      "email": "aj00@cdc.gov",
+    },
+    {
+      "name": "Michael Batista",
+      "affiliation": "CDC Center for Forecasting and Outbreak Analytics",
+      "email": "upi8@cdc.gov",
+    },
+    {
+      "name": "Kok Ben Toh",
+      "affiliation": "CDC Center for Forecasting and Outbreak Analytics",
+      "email": "tjk3@cdc.gov",
+    },
+    {
+      "name": "Thomas Hladish",
+      "affiliation": "CDC Center for Forecasting and Outbreak Analytics",
+      "email": "utx5@cdc.gov",
+    },
+  ]
+license: "Apache-2.0"
+methods: "SEIS three strain ODE model with age structure, immune waning, and vaccine and infection history.  Model represents the US and is fit to hospitalization and subtype prevalence data."
+model_version: "2025-09-05"
+website_url: "https://github.com/cdcgov/DynODE"
