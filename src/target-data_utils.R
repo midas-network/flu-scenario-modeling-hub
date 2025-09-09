@@ -2,27 +2,33 @@
 cdc_nhsn_standardize <- function(raw, sel_col,
                                  pathogen = c("COVID", "Influenza", "RSV"),
                                  age_group = FALSE) {
-  id_col <- c("Week.Ending.Date", "Geographic.aggregation")
-  df <- dplyr::select(raw, dplyr::all_of(c(sel_col, id_col))) |>
-    tidyr::pivot_longer(cols = dplyr::contains("Admissions"),
-                        names_to = "disease", values_to = "observation") |>
-    dplyr::mutate(pathogen = stringr::str_extract(.data[["disease"]],
-                                                  paste(pathogen,
-                                                        collapse = "|")))
+  id_col <- c("Week.Ending.Date", "Week Ending Date", "Geographic aggregation",
+              "Geographic.aggregation")
+  df <- dplyr::select(raw, dplyr::any_of(c(sel_col, id_col)))
+  df <- tidyr::pivot_longer(df, cols = dplyr::contains("Admissions"),
+                            names_to = "disease", values_to = "observation")
+  df <- dplyr::mutate(df,
+                      pathogen = stringr::str_extract(.data[["disease"]],
+                                                      paste(pathogen,
+                                                            collapse = "|")))
   out_col <- c("pathogen", "observation")
   if (age_group) {
-    df <- tidyr::separate(df, .data[["disease"]], into = c("disease",
-                                                           "age_group"),
-                          sep = "\\.\\.") |>
-      dplyr::mutate(age_group = gsub("plus", "130",
-                                     gsub("-$", "",
-                                          gsub("\\.", "-",
-                                               gsub("years|age", "",
-                                                    age_group)))))
+    df <- tidyr::separate(df, .data[["disease"]],
+                          into = c("disease", "age_group"), sep = "\\.\\.|, ")
+    df <- dplyr::mutate(
+      df,
+      age_group = gsub("plus", "130",
+                       gsub("-$", "",
+                            gsub("\\.\\ ", "-",
+                                 gsub("years|age", "",
+                                      gsub("\\+", "-130",
+                                           .data[["age_group"]]))))) |>
+        trimws()
+    )
     out_col <- c(out_col, "age_group")
   }
-  df <- dplyr::select(df, date = tidyr::all_of("Week.Ending.Date"),
-                      state_abbr = tidyr::all_of("Geographic.aggregation"),
+  df <- dplyr::select(df, date = dplyr::matches("Week.Ending.Date"),
+                      state_abbr = dplyr::matches("Geographic.aggregation"),
                       dplyr::all_of(out_col))
   return(df)
 }
@@ -32,8 +38,8 @@ column_selection <- function(raw, pathogen = c("COVID", "Influenza", "RSV"),
                              hosp_report = TRUE, hosp_report_unit = "percent",
                              age_group = TRUE) {
   # Select Admissions data
-  sel_col <- grep("\\.Admissions", colnames(raw), value = TRUE)
-  sel_col <- grep("Change|100.000", sel_col, value = TRUE, invert = TRUE)
+  sel_col <- grep("(\\ |\\.)Admissions", colnames(raw), value = TRUE)
+  sel_col <- grep("Change|100(.|,)000", sel_col, value = TRUE, invert = TRUE)
   # Select only pathogen of interest
   sel_col <- grep(paste(pathogen, collapse = "|"), sel_col, value = TRUE,
                   ignore.case = TRUE)
@@ -47,16 +53,16 @@ column_selection <- function(raw, pathogen = c("COVID", "Influenza", "RSV"),
     sel_col_report <- grep("pediatric|adult|(A|a)bove", sel_col_report,
                            value = TRUE, ignore.case = TRUE, invert = TRUE)
   }
-
+  
   sel_col <- grep("reporting", sel_col, value = TRUE, ignore.case = TRUE,
                   invert = TRUE)
   # Keep or not demographic data
   sel_col_demo <- NULL
   if (age_group)
-    sel_col_demo <- grep("year|age|75.plus", sel_col, value = TRUE,
+    sel_col_demo <- grep("year|age|75(\\.|\\ )?(plus|+)", sel_col, value = TRUE,
                          ignore.case = TRUE)
-  sel_col <- grep("year|age|75.plus", sel_col, value = TRUE, ignore.case = TRUE,
-                  invert = TRUE)
+  sel_col <- grep("year|age|75(.plus|+)?", sel_col, value = TRUE,
+                  ignore.case = TRUE, invert = TRUE)
   # Remove percent data & (adult, pediatric) data
   sel_col <- grep("percent|pediatric|adult", sel_col, value = TRUE,
                   ignore.case = TRUE, invert = TRUE)
@@ -79,8 +85,6 @@ column_selection <- function(raw, pathogen = c("COVID", "Influenza", "RSV"),
 #' @param hosp_report_unit Character string, unit of hospitals reporting:
 #'   "percent" (default) or "number"
 #' @param age_group Boolean, if TRUE (default) include age group information
-#' @param calc_miss Boolean, if TRUE interpolate missing data, by default
-#'   `FALSE`
 #'
 #' @details
 #' ## Source:
@@ -104,7 +108,7 @@ extract_nhsn <- function(cdc_data_ref = "ua7e-t2fy",
   # Load data
   down_link <- paste0("https://data.cdc.gov/api/views/", cdc_data_ref,
                       "/rows.csv?&accessType=DOWNLOAD")
-  raw <- read.csv(down_link)
+  raw <- read.csv(down_link, check.names = FALSE)
 
   # Column selection
   list_col <- column_selection(raw, pathogen = pathogen, age_group = age_group,
@@ -120,8 +124,9 @@ extract_nhsn <- function(cdc_data_ref = "ua7e-t2fy",
   }
   if (!is.null(list_col$sel_col_report)) {
     df_report <- cdc_nhsn_standardize(raw, list_col$sel_col_report,
-                                      pathogen = pathogen) |>
-      dplyr::rename(report = tidyr::all_of("observation"))
+                                      pathogen = pathogen)
+    df_report <- dplyr::rename(df_report,
+                               report = dplyr::matches("observation"))
     if (!is.null(list_col$sel_col_demo))
       df_report$age_group <- "0-130"
     df <- dplyr::left_join(df, df_report)
