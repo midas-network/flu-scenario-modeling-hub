@@ -1,0 +1,40 @@
+team_name: "UVA Biocomplexity Institute"
+team_abbr: "UVA"
+model_name: "FluXSim"
+model_abbr: "FluXSim"
+model_contributors: [
+  {
+    "name": "Srini Venkatramanan",
+    "affiliation": "University of Virginia",
+    "email": "srini@virginia.edu"
+  },
+  {
+   "name": "Aniruddha Adiga",
+    "affiliation": "University of Virginia",
+    "email": "aa5dw@virginia.edu"
+  },
+  {
+    "name": "Brian Klahn",
+    "affiliation": "University of Virginia",
+    "email": "briandk@virginia.edu"
+  },
+  {
+    "name": "Bryan Lewis",
+    "affiliation": "University of Virginia",
+    "email": "brylew@virginia.edu"
+  },
+  {
+    "name": "Madhav Marathe",
+    "affiliation": "University of Virginia",
+    "email": "marathe@virginia.edu"
+  }
+]
+license: "cc-by-4.0"
+methods: "Metapopulation simulation over age- and spatially-stratified synthetic contact network."
+methods_long: "We calibrate a state-specific metapopulation model aggregated to age groups and counties based on overall attack rate. Projections are generated through a parameter sweep for temporal transmissibility and IHR/IFR."
+model_version: "v1.0"
+website_url: "https://biocomplexity.virginia.edu/"
+team_funding: "CSTE/CDC 5 NU38OT000297"
+data_inputs: "Burden estimates from CDC. NHSN Hospitalization Data."
+citation: "Venkatramanan S, Chen J, Fadikar A, Gupta S, Higdon D, Lewis B, Marathe M, Mortveit H, Vullikanti A. Optimizing spatial allocation of seasonal influenza vaccine under temporal constraints. PLoS computational biology. 2019 Sep 16;15(9):e1007111."
+
