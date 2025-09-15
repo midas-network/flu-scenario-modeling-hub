@@ -1,0 +1,20 @@
+
+team_name: "UNC Charlotte"
+team_abbr: "UNCC"
+model_name: "Hierbin"
+model_abbr: "Hierbin"
+model_contributors: [
+  {
+    "name": "Shi Chen",
+    "affiliation": "University of North Carolina at Charlotte",
+    "email": "schen56@charlotte.edu"
+  }
+]
+license: "cc-by-4.0"
+methods: "Hybrid data-driven fitting and mechanistic projection."
+methods_long: "We developed a suite of data-driven methods such as time series model, fourier transformation, deep learning to fit historical case/hospitalization/death curves, and project based on scenario specifications in a mechanistic way."
+model_version: "v1.0"
+website_url: "NA"
+team_funding: "NA"
+data_inputs: "Directed by the SMH Coordination Team"
+citation: "Chen, S., Janies, D., Paul, R., and Thill, J-C. 2024. Leveraging advances in data-driven methods for epidemic modeling. Epidemics, 48, 100782. https://doi.org/10.1016/j.epidem.2024.100782"
