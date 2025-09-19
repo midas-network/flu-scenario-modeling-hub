@@ -1,0 +1,42 @@
+team_name: "Predictive Science Inc"
+team_abbr: "PSI"
+model_name: "Influenza scenario projections model 3"
+model_abbr: "M3"
+model_contributors: [
+  {
+    "name": "Turtle J",
+    "affiliation": "Predictive Science",
+    "email": "jturtle@predsci.com"
+  },
+  {
+   "name": "Ben-Nun M",
+    "affiliation": "Predictive Science",
+    "email": "mbennun@predsci.com"
+  },
+  {
+    "name": "Riley P",
+    "affiliation": "Predictive Science",
+    "email": "pete@predsci.com"
+  }
+]
+license: "cc-by-4.0"
+methods: "A mechanistic SIRS model discretized by 5 age groups, including vaccination immunity, and driven by a fit, arbitrary seasonal forcing function."
+methods_long: >
+  For each state/territory our scenario projections are generated using a mechanistic model with S[Sv]I[Iv]HR 
+  compartments, where 'v' subscripts indicate vaccinated and each compartment is age-stratified. We use the 
+  vaccine time series provided by the Scenario Hub and assume that the infection-susceptibility of 
+  vaccinated individuals is reduced by one half of vaccine effectiveness.  The vaccinated population experiences 
+  waning VE by trickling vaccinated individuals from Sv back to S during the course of a season.  The model is 
+  calibrated to 2022-2025 data using an iterative GMM resampling of parameter space with a uniform prior.  Projections
+  for each state are produced using a combination of a historic distribution all states seasonal per-capita burdens, 
+  the state's relative historic burden, the state's initial proportion Susceptible (as estimated by the calibration),
+  and the seasonal forcing function (also estimated by the calibration).  National projection trajectories are 
+  generated as the aggregate of state trajectories.  This aggregation is done using our error-correlation procedure, 
+  ordered by peak week—insuring that some timing-coherence is maintained when selecting state trajectories to sum.
+model_version: "3.0"
+team_funding: "CSTE program: Development of Forecasts and/or Scenario Projections for Influenza to Inform Public Health Decision-Making"
+data_inputs: >
+  NHSN weekly hospital admissions, US Census state populations by age, previous season vaccination
+  coverage surveys, CDC seasonal influenza burden estimates by age, CDC estimates of previous season
+  vaccine effectiveness, MOBS Lab state-level contact matrices.
+citation: "Turtle J, Ben-Nun M, Riley P. Enhancing seasonal influenza projections: A mechanistic metapopulation model for long-term scenario planning. Epidemics. 2024 Jun;47:100758. doi: 10.1016/j.epidem.2024.100758."
