@@ -21,6 +21,7 @@ model_contributors: [
 ]
 license: "cc-by-4.0"
 methods: "A mechanistic SIRS model discretized by 5 age groups, including vaccination immunity, and driven by a fit, arbitrary seasonal forcing function."
+website_url: ""
 methods_long: >
   For each state/territory our scenario projections are generated using a mechanistic model with S[Sv]I[Iv]HR 
   compartments, where 'v' subscripts indicate vaccinated and each compartment is age-stratified. We use the 
