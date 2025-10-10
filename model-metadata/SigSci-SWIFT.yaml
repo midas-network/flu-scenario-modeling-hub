@@ -1,0 +1,24 @@
+team_name: "Signature Science"
+team_abbr: "SigSci"
+model_name: "SWIFT"
+model_abbr: "SWIFT"
+model_contributors: [
+  {
+    "name": "Benefield AE",
+    "affiliation": "Signature Science, LLC",
+    "email": "abenefield@signaturescience.com"
+  },
+  {
+   "name": "Nagraj VP",
+    "affiliation": "Signature Science, LLC",
+    "email": "pnagraj@signaturescience.com"
+  }
+]
+license: "cc-by-4.0"
+methods: "SEIR model"
+methods_long: "Hybrid statistical-mechanistic, stochastic, spatially resolved SEIR model with dual-harmoic seasonality, age-weighted vaccination/severity effects, and geography-specific calibration using paired S0 draws."
+model_version: "2.0"
+website_url: "https://www.signaturescience.com/what-we-do/health-security/infectious-disease/"
+team_funding: "Internal; CSTE subaward"
+data_inputs: "Weekly Hospital Respiratory Data (HRD) Metrics by Jurisdiction, National Healthcare Safety Network (NHSN)."
+citation: ""

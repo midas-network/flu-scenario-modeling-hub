@@ -64,6 +64,9 @@
             "description": "License for use of model output data",
             "type": "string",
             "enum": [
+                "Apache-2.0",
+                "apache-2.0",
+                "APACHE-2.0",
                 "BSD Simplified",
                 "CC0-1.0",
                 "cc0-1.0",

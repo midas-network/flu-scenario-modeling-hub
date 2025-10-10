@@ -1,0 +1,24 @@
+team_name: "NIH"
+team_abbr: "NIH"
+model_name: "NIH-Flu_TS"
+model_abbr: "Flu_TS"
+model_contributors: [
+  {
+    "name": "Amanda Perofsky",
+    "affiliation": "Fogarty International Center, National Institutes of Health",
+    "email": "amanda.perofsky@nih.gov"
+  },
+  {
+   "name": "Cécile Viboud",
+    "affiliation": "Fogarty International Center, National Institutes of Health",
+    "email": "viboudc@mail.nih.gov"
+  }
+]
+license: "CC-BY-4.0"
+methods: "Seasonal ARIMA model with exogenous covariates for vaccination coverage, vaccine effectiveness, IAV subtype circulation, and influenza transmission rates."
+methods_long: "We model flu hospitalizations in each location using dynamic harmonic regression with ARMA errors and exogenous covariates for vaccination, flu virus subtype circulation, and influenza transmission rates. To calibrate models, we use 4-10 years of historical data (depending on the location), including influenza-coded hospitalizations, outpatient influenza-like illness rates, IAV subtype circulation, 1-2 week lagged flu 'infections' (inferred from Rt estimation), and vaccine coverage and effectiveness. To estimate weekly Rt, we fit semi-mechanistic Bayesian epidemic models to observed ILI+ (ILI x % positive) rates."
+model_version: "2025-09-16"
+website_url: "https://www.fic.nih.gov/About/Staff/epidemiology-population-studies/pages/computational-epidemiology-and-modeling-of-infectious-diseases.aspx"
+team_funding: "N/A"
+data_inputs: "Weekly incident CDC NHSN influenza-coded admissions, weekly CDC FluSurv-NET hospitalization rates, weekly syndromic and virologic surveillance data from CDC FluView, vaccination coverage estimates from the National Center for Immunization and Respiratory Diseases, and seasonal vaccine effectiveness estimates from published literature and CDC."
+citation: "N/A"

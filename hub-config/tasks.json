@@ -172,7 +172,8 @@
               },
               "value" : {
                 "type": "double",
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 1
               },
               "is_required": true
             }
