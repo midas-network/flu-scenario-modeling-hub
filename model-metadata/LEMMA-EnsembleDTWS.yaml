@@ -1,0 +1,19 @@
+team_name: "LEMMA (Part of the ACCIDDA center)"
+team_abbr: "LEMMA"
+model_name: "DTW+Shape based Ensemble"
+model_abbr: "EnsembleDTWS"
+model_version: "1.0"
+model_contributors: [
+  {
+    "name": "Ajitesh Srivastava",
+    "affiliation": "University of Southern California",
+    "email": "ajitesh47@gmail.com"
+  }
+]
+website_url: "https://www.ajitesh-srivastava.com/"
+license: "CC-BY_SA-4.0"
+citation: "https://ojs.aaai.org/index.php/AAAI/article/view/35062"
+team_funding: "InsightNet"
+methods: "A combination of Dynamic Time Warping in shapelet space to create ensemble."
+data_inputs: "Multiple trajectories form one or more models"
+methods_long: "Current ensembling methods are limited to mean and median ensembles that perform aggregation of scale (cases, hospitalizations, deaths) along the time axis, which often misrepresents the underlying trajectories -- e.g., they underrepresent the peak. Instead, we wish to create an ensemble that represents aggregation simultaneously over both time and scale and thus better preserves the properties of the trajectories. We use a novel alignment method DTW+SBA, which combines a representation of local trends along with dynamic time warping barycenter averaging. This method mathematically ensures appropriate alignment based on local trends. We have demonstrated on real multi-model outputs that our approach preserves the properties of underlying trajectories. We have also shown that our alignment leads to a more sensible clustering of epidemic trajectories. "
