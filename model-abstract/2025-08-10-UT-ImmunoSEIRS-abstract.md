@@ -3,7 +3,7 @@ The results show the development of a flu wave whose timing and magnitude is dif
 
 
 # General Model Description
-Our age-structured SEIRS (Susceptible-Exposed-Infectious-Recovered-Susceptible) model simulates influenza transmission across six age groups (0-4, 5-11, 12-17, 18-49, 50-64, and 65+). Infected individuals are hospitalized based on age-specific infection hospitalizations rates. Seasonality is modeled using state-specific absolute humidity data from NOAA, age-specific contact patterns by setting, and national school and holiday calendars. A central feature of the model is its treatment of population immunity. Unlike traditional compartmental models, which assign individuals to discrete immune states, we use non-dimensional state variables to represent immunity continuously across the population. These variables track protection against infection and hospitalization, separately capturing immunity derived from vaccination and from prior infection. They evolve over time to reflect the accumulation and waning of protection, informed by published estimates of vaccine uptake, effectiveness and waning rates. The model accounts for both intraseasonal immunity—built up through new infections and vaccinations—and interseasonal immunity, which is estimated at the start of each season based on prior data and wanes over time. Because both the 2023-2024 and 2024–2025 influenza seasons were dominated by A(H1N1), though in 2024-25 season H3N2 proportion is similar to that of H1N1, we attribute both forms of immunity to a single subtype. Vaccine effectiveness (VE) against hospitalization was based on CDC estimates for the 2024–2025 season for the fitting period, while for projection IT was as per hub guidelines to 50%. We included VE against infection as per hub reference to around 20%.
+Our age-structured SEIRS (Susceptible-Exposed-Infectious-Recovered-Susceptible) model simulates influenza transmission across six age groups (0-4, 5-11, 12-17, 18-49, 50-64, and 65+). Infected individuals are hospitalized based on age-specific infection hospitalizations rates. Seasonality is modeled using state-specific absolute humidity data from NOAA, age-specific contact patterns by setting, and national school and holiday calendars. A central feature of the model is its treatment of population immunity. Unlike traditional compartmental models, which assign individuals to discrete immune states, we use non-dimensional state variables to represent immunity continuously across the population. These variables track protection against infection and hospitalization, separately capturing immunity derived from vaccination and from prior infection. They evolve over time to reflect the accumulation and waning of protection, informed by published estimates of vaccine uptake, effectiveness and waning rates. The model accounts for both intraseasonal immunity—built up through new infections and vaccinations—and interseasonal immunity, which is estimated at the start of each season based on prior data and wanes over time. Because both the 2023-2024 and 2024–2025 influenza seasons were dominated by A(H1N1), though in 2024-25 season H3N2 proportion is similar to that of H1N1, we attribute both forms of immunity to a single subtype. Vaccine effectiveness (VE) against hospitalization was based on CDC estimates for the 2024–2025 season for the fitting period, while for projection it was as per hub guidelines to 50%. We included VE against infection as per hub reference to around 20%.
 This model was previously developed and applied to project the 2023–2024 influenza season, with projections aligning closely with observed hospitalization data.
 
 
@@ -31,16 +31,16 @@ We consider that the half-life time of immune waning is 8 months following natur
 
 ## Details on Influenza Strain(s)
 ### Number of strains/subtypes included in model
-1
+One
 
 ### Strain(s) specifications (immune escape, transmissibility)
-H1N1
+The model describes that strain composition in each season generates its immunity independently. We assume a baseline transmission rate of 0.54 estimated for the baseline 2024-25 season. The transmission rate is then updated according to the specified effective reproduction number for the following season.
 
 ### Are interactions between strains/subtypes implicitly modeled?
-NA
+Strain-strain interactions are not explicitly captured. Instead, the model captures each season's strain composition as a separate variant with a distinct immunity. In this analysis, and we considered same immunity as 24-25 for baseline projection. The epidemics of the following year are impacted by the remaining immunity, the prescribed effective reproduction number, seasonality effects and the IHR.
 
 ## Seasonality implementation
-Yes. We incorporated seaonality by means of specific humidity specific to national and state levels. Additionally, school and work calendar along with contact matrices cater to human forced phenomenon. 
+Yes. We incorporated seasonality by means of specific humidity specific to national and state levels. Additionally, school and work calendar along with contact matrices cater to human forced phenomenon.
 
 ## Initial Conditions
 ### Details on circulating strains at the start of the projection period
