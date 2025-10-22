@@ -619,6 +619,76 @@ The Scenario Modeling Hub site is supported by the MIDAS Coordination Center,
 NIGMS Grant U24GM132013 (2019-2024) and R24GM153920 (2024-2029) to the
 University of Pittsburgh.
 
+## Teams and models
+
+- [*Atlantic Coast Center for Infectious Disease Dynamics and Analytics --- FlepiMoP*](model-metadata/ACCIDDA-FlepiMoP.yml)
+    - Joshua Macdonald (Johns Hopkins University),
+      Timothy Willard (University of North Carolina at Chapel Hill),
+      Carl Pearson (University of North Carolina at Chapel Hill),
+      Joseph Lemaitre (University of North Carolina atChapel Hill), 
+      Sara Loo (Johns Hopkins University),
+      Clif McKee (JohnsHopkins University),
+      Emily Przykucki,
+      Justin Lessler (University of North Carolina at Chapel Hill), 
+      Shaun Truelove(Johns Hopkins University)
+
+- [*California Department of Public Health (CADPH) --- FluCAT*](model-metadata/CADPH-FluCAT.yaml)
+    - White, Lauren (California Department of Public Health), 
+      Leon, Tomas (California Department of Public Health)
+
+- [*CEPH Lab at Indiana University --- MetaFlu*](model-metadata/CEPH-MetaFlu.yaml)
+    – Marco Ajelli (Indiana University Bloomington),
+      Shreeya Mhade (Indiana University Bloomington),
+      Paulo C.Ventura (Indiana University Bloomington)
+
+- [*CFA --- Scenarios*](model-metadata/CFA-Scenarios.yaml)
+    – Laura Albrecht (CDC Center for Forecasting and Outbreak Analytics),
+      Elisha Are (CDC Center for Forecastingand Outbreak Analytics),
+      Michael Batista (CDC Center for Forecasting and Outbreak Analytics),
+      Kok Ben Toh(CDC Center for Forecasting and Outbreak Analytics),
+      Thomas Hladish (CDC Center for Forecasting and OutbreakAnalytics)
+
+- [*LEMMA (Part of the ACCIDDA center) --- EnsembleDTWS*](model-metadata/LEMMA-EnsembleDTWS.yaml)
+    – Ajitesh Srivastava (University of Southern California)
+
+- [*MOBS Lab at Northeastern University --- GLEAM_FLU*](model-metadata/MOBS_NEU-GLEAM_FLU.yaml)
+    – Alessandro Vespignani (MOBS Lab, Northeastern University),
+      Matteo Chinazzi (The Roux Institute, NortheasternUniversity),
+      Jessica T. Davis (MOBS Lab, Northeastern University)
+
+- [*NIH --- Flu_TS*](model-metadata/NIH-Flu_TS.yaml)
+    – Amanda Perofsky (Fogarty International Center, National Institutes of Health),
+      Cécile Viboud (Fogarty InternationalCenter, National Institutes of Health)
+
+- [*One Health Trust and Johns Hopkins University --- gpop*](model-metadata/OHT_JHU-gpop.yaml)
+    – Alexander Tulchinsky (One Health Trust),
+    Eili Klein (One Health Trust & Johns Hopkins School of Medicine)
+
+- [*Predictive Science Inc --- M3*](model-metadata/PSI-M3.yaml)
+    – Turtle J (Predictive Science), Ben-Nun M (Predictive Science),
+      Riley P (Predictive Science)
+
+- [*Signature Science --- SWIFT*](model-metadata/SigSci-SWIFT.yaml)
+    – Benefield AE (Signature Science, LLC), 
+      Nagraj VP (Signature Science, LLC)
+
+- [*UNC Charlotte --- Hierbin*](model-metadata/UNCC-Hierbin.yaml)
+    – Shi Chen (University of North Carolina at Charlotte)
+
+- [*University of Texas at Austin --- ImmunoSEIRS*](model-metadata/UT-ImmunoSEIRS.yaml)
+    – Shraddha Ramdas Bandekar (The University of Texas at Austin),
+      Kaiming Bi (University of Texas Health ScienceCenter School of Public Health),
+      Anass Bouchnita (The University of Texas at El Paso),
+      Spencer J. Fox (NorthernArizona University),
+      Lauren Ancel Meyers (The University of Texas at Austin)
+
+- [*UVA Biocomplexity Institute --- FluXSim*](model-metadata/UVA-FluXSim.yaml)
+    – Srini Venkatramanan (University of Virginia), 
+      Aniruddha Adiga (University of Virginia), 
+      Brian Klahn (University of Virginia), 
+      Bryan Lewis (University of Virginia), 
+      Madhav Marathe (University of Virginia)
+
 ## The Flu Scenario Modeling Hub Coordination Team
 
  - Shaun Truelove, Johns Hopkins University
