@@ -39,7 +39,10 @@ column_selection <- function(raw, pathogen = c("COVID", "Influenza", "RSV"),
                              age_group = TRUE) {
   # Select Admissions data
   sel_col <- grep("(\\ |\\.)Admissions", colnames(raw), value = TRUE)
-  sel_col <- grep("Change|100(.|,)000", sel_col, value = TRUE, invert = TRUE)
+  sel_col <- grep("Change|100(.|,)000", sel_col, value = TRUE, invert = TRUE,
+                  ignore.case = TRUE)
+  sel_col <- grep("Cumulative", sel_col, value = TRUE, invert = TRUE,
+                  ignore.case = TRUE)
   # Select only pathogen of interest
   sel_col <- grep(paste(pathogen, collapse = "|"), sel_col, value = TRUE,
                   ignore.case = TRUE)
@@ -53,7 +56,7 @@ column_selection <- function(raw, pathogen = c("COVID", "Influenza", "RSV"),
     sel_col_report <- grep("pediatric|adult|(A|a)bove", sel_col_report,
                            value = TRUE, ignore.case = TRUE, invert = TRUE)
   }
-  
+
   sel_col <- grep("reporting", sel_col, value = TRUE, ignore.case = TRUE,
                   invert = TRUE)
   # Keep or not demographic data
@@ -161,16 +164,16 @@ standard_nhsn <- function(df, location2number, abbr2location,
   df <-
     dplyr::filter(df, !grepl("Region \\d+", .data[["state_abbr"]])) |>
     dplyr::mutate(date = as.Date(date),
-                  location = 
+                  location =
                     location2number[abbr2location[.data[["state_abbr"]]]],
-                  age_cat = 
+                  age_cat =
                     dplyr::case_when(.data[["age_group"]] == "0-4" ~ "0-4",
                                      .data[["age_group"]] == "5-17" ~ "5-17",
                                      .data[["age_group"]] == "18-49" ~ "18-49",
                                      .data[["age_group"]] == "50-64" ~ "50-64",
-                                     .data[["age_group"]] %in% 
+                                     .data[["age_group"]] %in%
                                        c("65-74", "75-130") ~ "65-130",
-                                     .data[["age_group"]] %in% "0-130" ~ 
+                                     .data[["age_group"]] %in% "0-130" ~
                                        "0-130",
                                      .data[["age_group"]] == "unknown" ~ NA)) |>
     dplyr::summarise(observation = sum(.data[["observation"]]),
