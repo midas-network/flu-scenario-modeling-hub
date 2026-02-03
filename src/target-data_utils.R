@@ -156,6 +156,8 @@ standard_nhsn <- function(df, location2number, abbr2location,
                                       .data[["report"]]),
                       .by = c("date", "state_abbr", "pathogen"))
   if (!is.null(report_limit)) {
+    if (range(df$report, na.rm = TRUE)[2] > 1)
+      report_limit <- report_limit * 100
     df <-
       dplyr::mutate(df, observation = ifelse(.data[["report"]] < report_limit &
                                                !is.na(.data[["report"]]),
