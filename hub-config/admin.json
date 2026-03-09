@@ -1,5 +1,5 @@
 {
-    "schema_version":"https://raw.githubusercontent.com/hubverse-org/schemas/main/v5.1.0/admin-schema.json",
+    "schema_version":"https://raw.githubusercontent.com/hubverse-org/schemas/main/v6.0.0/admin-schema.json",
     "name": "Flu Scenario Modeling Hub",
     "maintainer": "Flu Scenario Modeling Hub Coordination Team",
     "contact": {
@@ -12,6 +12,5 @@
         "name": "flu-scenario-modeling-hub"
     },
     "file_format":["parquet"],
-    "timezone": "US/Eastern",
-    "model_output_dir": "model-output"
+    "timezone": "US/Eastern"
 }

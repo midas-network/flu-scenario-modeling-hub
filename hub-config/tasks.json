@@ -1,5 +1,5 @@
 {
-  "schema_version": "https://raw.githubusercontent.com/hubverse-org/schemas/main/v5.1.0/tasks-schema.json",
+  "schema_version": "https://raw.githubusercontent.com/hubverse-org/schemas/main/v6.0.0/tasks-schema.json",
   "rounds": [
     {
       "round_id": "origin_date",
@@ -51,8 +51,6 @@
             {
               "target_id": "inc hosp",
               "target_name": "Incident hospitalizations",
-              "alternative_name": "incident hospitalization count",
-              "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000645",
               "target_units": "count",
               "target_keys": {
                 "target": "inc hosp"
@@ -60,7 +58,11 @@
               "description": "Weekly newly reported hospitalizations where the patient has Flu, as reported by hospital facilities and aggregated in the HHS Protect/NHSN data collection system.",
               "target_type": "discrete",
               "is_step_ahead": true,
-              "time_unit": "week"
+              "time_unit": "week",
+              "additional_metadata": {
+                "alternative_name": "incident hospitalization count",
+                "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000645"
+              }
             }
           ]
         },
@@ -122,8 +124,6 @@
             {
               "target_id": "inc ed visit",
               "target_name": "Incident Emergency Department visit",
-              "alternative_name": "incident emergency department visit count",
-              "uri": "http://w3id.org/midas-metadata/midas26",
               "target_units": "percent",
               "target_keys": {
                 "target": "inc ed visit"
@@ -131,7 +131,11 @@
               "description": "Weekly newly reported emergency department, as reported by hospital facilities and aggregated in the NSSP data collection system.",
               "target_type": "discrete",
               "is_step_ahead": true,
-              "time_unit": "week"
+              "time_unit": "week",
+              "additional_metadata": {
+                "alternative_name": "incident emergency department visit count",
+                "uri": "http://w3id.org/midas-metadata/midas26"
+              }
             }
           ]
         },
@@ -282,8 +286,6 @@
             {
               "target_id": "inc death",
               "target_name": "Incident deaths",
-              "alternative_name": "incident death count",
-              "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000647",
               "target_units": "count",
               "target_keys": {
                 "target": "inc death"
@@ -291,7 +293,11 @@
               "description": "Weekly new deaths due to Flu as reported by state and local departments of public health and aggregated in the NCHS data collection system.",
               "target_type": "discrete",
               "is_step_ahead": true,
-              "time_unit": "week"
+              "time_unit": "week",
+              "additional_metadata": {
+                "alternative_name": "incident death count",
+                "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000647"
+              }
             }
           ]
         },
@@ -338,8 +344,6 @@
             {
               "target_id": "inc death",
               "target_name": "Incident deaths",
-              "alternative_name": "incident death count",
-              "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000647",
               "target_units": "count",
               "target_keys": {
                 "target": "inc death"
@@ -347,13 +351,15 @@
               "description": "Weekly new deaths due to Flu as reported by state and local departments of public health and aggregated in the NCHS data collection system.",
               "target_type": "discrete",
               "is_step_ahead": true,
-              "time_unit": "week"
+              "time_unit": "week",
+              "additional_metadata": {
+                "alternative_name": "incident death count",
+                "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000647"
+              }
             },
             {
               "target_id": "cum death",
               "target_name": "Cumulative deaths",
-              "alternative_name": "cumulative death count",
-              "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000646",
               "target_units": "count",
               "target_keys": {
                 "target": "cum death"
@@ -361,7 +367,11 @@
               "description": "Weekly cumulative deaths due to Flu",
               "target_type": "discrete",
               "is_step_ahead": true,
-              "time_unit": "week"
+              "time_unit": "week",
+              "additional_metadata": {
+                "alternative_name": "cumulative death count",
+                "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000646"
+              }
             }
           ]
         },
@@ -408,8 +418,6 @@
             {
               "target_id": "inc hosp",
               "target_name": "Incident hospitalizations",
-              "alternative_name": "incident hospitalization count",
-              "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000645",
               "target_units": "count",
               "target_keys": {
                 "target": "inc hosp"
@@ -417,13 +425,15 @@
               "description": "Weekly newly reported hospitalizations where the patient has Flu, as reported by hospital facilities and aggregated in the HHS Protect/NHSN data collection system.",
               "target_type": "discrete",
               "is_step_ahead": true,
-              "time_unit": "week"
+              "time_unit": "week",
+              "additional_metadata": {
+                "alternative_name": "incident hospitalization count",
+                "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000645"
+              }
             },
             {
               "target_id": "cum hosp",
               "target_name": "Cumulative hospitalizations",
-              "alternative_name": "cumulative hospitalization count",
-              "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000644",
               "target_units": "count",
               "target_keys": {
                 "target": "cum hosp"
@@ -431,7 +441,11 @@
               "description": "Weekly cumulative reported hospitalizations where the patient has Flu",
               "target_type": "discrete",
               "is_step_ahead": true,
-              "time_unit": "week"
+              "time_unit": "week",
+              "additional_metadata": {
+                "alternative_name": "cumulative hospitalization count",
+                "uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000644"
+              }
             }
           ]
         },
@@ -478,15 +492,17 @@
             {
               "target_id": "peak size hosp",
               "target_name": "Peak Size of Hospitalization",
-              "alternative_name": "peak hospitalization count",
-              "uri": "http://w3id.org/midas-metadata/midas100",
               "target_units": "count",
               "target_keys": {
                 "target": "peak size hosp"
               },
               "description": "magnitude of the peak of weekly incident hospitalizations in the model, when considering the full projection period.",
               "target_type": "discrete",
-              "is_step_ahead": false
+              "is_step_ahead": false,
+              "additional_metadata": {
+                "alternative_name": "peak hospitalization count",
+                "uri": "http://w3id.org/midas-metadata/midas100"
+              }
             }
           ]
         },
@@ -534,15 +550,17 @@
             {
               "target_id": "peak time hosp",
               "target_name": "Peak Timing of Hospitalization",
-              "alternative_name": "peak hospitalization time cumulative distribution",
-              "uri": "http://w3id.org/midas-metadata/midas101",
               "target_units": "",
               "target_keys": {
                 "target": "peak time hosp"
               },
               "description": "Cumulative probability of the incident hospitalization peak occurring before or during the week that is N weeks after origin_date",
               "target_type": "discrete",
-              "is_step_ahead": false
+              "is_step_ahead": false,
+              "additional_metadata": {
+                "alternative_name": "peak hospitalization time cumulative distribution",
+                "uri": "http://w3id.org/midas-metadata/midas101"
+              }
             }
           ]
         }
@@ -551,7 +569,15 @@
           "start": "2025-09-01",
           "end": "2025-11-01"
       },
-      "partition": ["origin_date", "target"]
+      "additional_metadata": {
+        "partition": ["origin_date", "target"],
+        "disease": [
+          {
+            "name": "influenza",
+            "uri": "http://purl.obolibrary.org/obo/MONDO_0005812"
+          }
+        ]
       }
+    }
   ]
 }
