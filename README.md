@@ -639,7 +639,8 @@ University of Pittsburgh.
 - [*CEPH Lab at Indiana University --- MetaFlu*](model-metadata/CEPH-MetaFlu.yaml)
     – Marco Ajelli (Indiana University Bloomington),
       Shreeya Mhade (Indiana University Bloomington),
-      Paulo C.Ventura (Indiana University Bloomington)
+      Paulo C.Ventura (Indiana University Bloomington),
+      Maria Litvinova (Indiana University Bloomington)
 
 - [*CFA --- Scenarios*](model-metadata/CFA-Scenarios.yaml)
     – Laura Albrecht (CDC Center for Forecasting and Outbreak Analytics),
