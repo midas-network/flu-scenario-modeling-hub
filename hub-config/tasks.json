@@ -56,7 +56,7 @@
                 "target": "inc hosp"
               },
               "description": "Weekly newly reported hospitalizations where the patient has Flu, as reported by hospital facilities and aggregated in the HHS Protect/NHSN data collection system.",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
               "additional_metadata": {
@@ -129,7 +129,7 @@
                 "target": "inc ed visit"
               },
               "description": "Weekly newly reported emergency department, as reported by hospital facilities and aggregated in the NSSP data collection system.",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
               "additional_metadata": {
@@ -291,7 +291,7 @@
                 "target": "inc death"
               },
               "description": "Weekly new deaths due to Flu as reported by state and local departments of public health and aggregated in the NCHS data collection system.",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
               "additional_metadata": {
@@ -349,7 +349,7 @@
                 "target": "inc death"
               },
               "description": "Weekly new deaths due to Flu as reported by state and local departments of public health and aggregated in the NCHS data collection system.",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
               "additional_metadata": {
@@ -365,7 +365,7 @@
                 "target": "cum death"
               },
               "description": "Weekly cumulative deaths due to Flu",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
               "additional_metadata": {
@@ -423,7 +423,7 @@
                 "target": "inc hosp"
               },
               "description": "Weekly newly reported hospitalizations where the patient has Flu, as reported by hospital facilities and aggregated in the HHS Protect/NHSN data collection system.",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
               "additional_metadata": {
@@ -439,7 +439,7 @@
                 "target": "cum hosp"
               },
               "description": "Weekly cumulative reported hospitalizations where the patient has Flu",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
               "additional_metadata": {
@@ -497,7 +497,7 @@
                 "target": "peak size hosp"
               },
               "description": "magnitude of the peak of weekly incident hospitalizations in the model, when considering the full projection period.",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": false,
               "additional_metadata": {
                 "alternative_name": "peak hospitalization count",
@@ -555,7 +555,7 @@
                 "target": "peak time hosp"
               },
               "description": "Cumulative probability of the incident hospitalization peak occurring before or during the week that is N weeks after origin_date",
-              "target_type": "discrete",
+              "target_type": "continuous",
               "is_step_ahead": false,
               "additional_metadata": {
                 "alternative_name": "peak hospitalization time cumulative distribution",
