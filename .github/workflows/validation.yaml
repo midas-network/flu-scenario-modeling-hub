@@ -1,6 +1,6 @@
 name: Validate
 on:
-  pull_request_target:
+  pull_request:
     types: [synchronize, opened, reopened]
     branches:
       - main
@@ -12,14 +12,14 @@ on:
 jobs:
     validates-files:
         runs-on: ubuntu-latest
-        
+
         env:
           GH_PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         steps:
         - name: Checkout repository
-          uses: actions/checkout@v3
+          uses: actions/checkout@v6
           with:
             ref: ${{ github.event.pull_request.head.sha }}
             fetch-depth: 1
@@ -54,6 +54,8 @@ jobs:
             GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
         - name: Run Validation - Open/reopen
+          id: validation_open
+          continue-on-error: true
           if: ( github.event.action != 'synchronize' )
           run: |
             R -e 'source("src/validation.R")
@@ -62,12 +64,33 @@ jobs:
                               Sys.getenv("GH_TOKEN"))'
 
         - name: Run Validation - Synchronize
+          id: validation_sync
           if: ( github.event.action == 'synchronize' )
+          continue-on-error: true
           run: |
             R -e 'source("src/validation.R")
                   pr_validate(Sys.getenv("GITHUB_REPOSITORY"),
-                              Sys.getenv("GH_PR_NUMBER"), 
+                              Sys.getenv("GH_PR_NUMBER"),
                               Sys.getenv("GH_COMMIT_SHA"), ".",
                               Sys.getenv("GH_TOKEN"))'
           env:
             GH_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+
+        - name: Record which PR this belongs to
+          if: always()
+          run: |
+            echo "${{ github.event.pull_request.number }}" > pr_number.txt
+
+        - name: Upload result as artifact
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+            name: pr-comment
+            path: |
+              comment.txt
+              pr_number.txt
+            retention-days: 1
+
+        - name: Fail if error in validation
+          if: steps.validation_open.outcome == 'failure' || steps.validation_sync.outcome == 'failure'
+          run: exit 1
