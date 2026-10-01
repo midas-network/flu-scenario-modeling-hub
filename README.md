@@ -226,7 +226,7 @@ should have the same initial calibration conditions.
 **ROUND 1 FLU 2025-26**
 
 - **Scenarios set (no changes after):** *Thursday, October 1, 2026*
-- **Projections period:** *Sunday, October 4, 2026 - Saturday June 5, 2026*
+- **Projections period:** *Sunday, October 4, 2026 - Saturday June 5, 2027*
 - **Projections due:** *Tuesday, October 20, 2026*
 - **Report finalized:** *No later than Friday, Nov 6, 2026*
 
