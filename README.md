@@ -55,7 +55,7 @@ for submission and required file formats can be found
 [here](./model-output/README.md).
 
 
-## Influenza Round 1 2025-26: Vaccine Coverage - Vaccine impact and pre-season projections for the 2025-26 season
+## Influenza Round 1 2026-27: Vaccine Coverage - Vaccine impact and pre-season projections for the 2026-27 season
 
 
 The primary goal of Round 1 of 2026-27 is to evaluate the impact of flu 
