@@ -65,7 +65,7 @@ validate_model_output <- function(x, repo_name, gh_pr_number, gh_token,
 
   val_param <- val_param[[round_id]]
   # partition validation
-  if (length(unlist(strsplit(x, "/"))) > 2) {
+  if (!grepl("\\.", basename(x))) {
     if (!"partition" %in% names(val_param)) {
       msg <- paste0("The model output file seems to be partitioned, partition",
                     "not accepted for this round, please verify")
@@ -75,11 +75,13 @@ validate_model_output <- function(x, repo_name, gh_pr_number, gh_token,
       }
       stop(msg)
     }
+    x_path <- dirname(x)
     test_mod_files <-
-      SMHvalidation::validate_part_file(".", x, val_param$partition) |>
+      SMHvalidation::validate_part_file(".", x_path, val_param$partition,
+                                        round_id = round_id) |>
       process_test(file_path = x)
     test_mod_content <- do.call(validate_subm,
-                                c(val_param, x = x, hub_path = hub_path,
+                                c(val_param, x = x_path, hub_path = hub_path,
                                   round_id = round_id))
   } else {
     if ("partition" %in% names(val_param)) val_param$partition <- NULL
@@ -139,6 +141,9 @@ pr_validate <- function(repo_name, gh_pr_number, gh_commit_sha, hub_path,
   # Model output
   if (any(grepl("model-output/", unique(pr_filenames)))) {
     mod_files <- extract_files(pr_files, "model-output/", commit = commit)
+    mod_files <- unique(purrr::map_chr(mod_files,
+                                       ~paste(strsplit(.x, "/")[[1]][1:2],
+                                              collapse = "/")))
     test_mod <-
       purrr::map(mod_files,
                  ~ validate_model_output(.x, repo_name, gh_pr_number, gh_token,
