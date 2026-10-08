@@ -22,5 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/
+            hub-config
 
       - uses: hubverse-org/hubverse-actions/validate-config@v2
