@@ -63,7 +63,7 @@ vaccination under different vaccination regimes and assess the direct and
 indirect benefits of children vaccination. An additional goal is to provide 
 pre-season projections for the upcoming influenza season at a time when flu 
 activity is low, similarly to prior influenza rounds. We will consider 4 
-coverage levels over a 35-week period, running Sun Oct 11, 2026 to Sat June 5, 
+coverage levels over a 36-week period, running Sun Oct 4, 2026 to Sat June 5, 
 2027. 
 
 
