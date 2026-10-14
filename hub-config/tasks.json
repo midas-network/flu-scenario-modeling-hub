@@ -290,7 +290,7 @@
               "target_keys": {
                 "target": "inc death"
               },
-              "description": "Weekly new deaths due to Flu as reported by state and local departments of public health and aggregated in the NCHS data collection system.",
+              "description": "Weekly new deaths due to Flu as reported by CDC multiplier model (i.e., true mortality burden from the pyramid). These are real-time model estimates updated weekly during the influenza season.",
               "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
@@ -348,7 +348,7 @@
               "target_keys": {
                 "target": "inc death"
               },
-              "description": "Weekly new deaths due to Flu as reported by state and local departments of public health and aggregated in the NCHS data collection system.",
+              "description": "Weekly new deaths due to Flu as reported by CDC multiplier model (i.e., true mortality burden from the pyramid). These are real-time model estimates updated weekly during the influenza season.",
               "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
@@ -879,7 +879,7 @@
               "target_keys": {
                 "target": "inc death"
               },
-              "description": "Weekly new deaths due to Flu as reported by state and local departments of public health and aggregated in the NCHS data collection system.",
+              "description": "Weekly new deaths due to Flu as reported by CDC multiplier model (i.e., true mortality burden from the pyramid). These are real-time model estimates updated weekly during the influenza season.",
               "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",
@@ -939,7 +939,7 @@
               "target_keys": {
                 "target": "inc death"
               },
-              "description": "Weekly new deaths due to Flu as reported by state and local departments of public health and aggregated in the NCHS data collection system.",
+              "description": "Weekly new deaths due to Flu as reported by CDC multiplier model (i.e., true mortality burden from the pyramid). These are real-time model estimates updated weekly during the influenza season.",
               "target_type": "continuous",
               "is_step_ahead": true,
               "time_unit": "week",

@@ -333,9 +333,12 @@ the dates they occurred, not on the date they were reported (from Sunday through
 Saturday, inclusive).
 
 Predictions for this target will be evaluated compared to the number of new
-deaths, as recorded by the National Center for Health Statistics (NCHS) as 
-distributed by the
-[FluView Interactive - Mortality CDC dashboard](https://gis.cdc.gov/grasp/fluview/mortality.html). 
+deaths, as recorded by the CDC multiplier model (i.e., true mortality burden 
+from the pyramid). These are real-time model estimates updated weekly during 
+the influenza season. The model relies on influenza deaths reported in the
+hospitals via the FluSurv-NET system, adjusted for under testing of flu in 
+the hospital and the proportion of deaths occurring outside of the hospital. 
+There is no state detail.
 
 
 #### inc ed visit

@@ -292,12 +292,13 @@ vaccination should aggregate to specifications in scenarios
 
 In this round, we will **require submission of 300-600 individual trajectories 
 for each target while submission of quantiles is optional**. As a result, the only 
-required targets for trajectories will be weekly incident hospitalizations and weekly 
-deaths. Estimates of cumulative counts can be obtained from weekly trajectories and hence 
-we do not require trajectories for cumulative counts. Similarly peak targets (peak 
-hospitalization magnitude and peak timing) can be reconstructed from weekly trajectories. 
-Teams who wish to submit quantiles along with trajectories should provide quantiles for 
-weekly and cumulative counts, as well as for hospitalization peak size and peak timing. 
+required targets for trajectories will be weekly incident hospitalizations. Weekly 
+deaths targets are optionals. Estimates of cumulative counts can be obtained from 
+weekly trajectories and hence we do not require trajectories for cumulative counts. 
+Similarly peak targets (peak hospitalization magnitude and peak timing) can be 
+reconstructed from weekly trajectories. Teams who wish to submit quantiles along 
+with trajectories should provide quantiles for weekly and cumulative counts, as 
+well as for hospitalization peak size and peak timing. 
 
 
 We require that simulations are paired across time, age group, targets (deaths, 
