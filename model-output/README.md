@@ -368,6 +368,8 @@ the week that is N weeks after `origin_date` (since start of the simulation).
 A week-ahead scenario should represent the cumulative number of deaths
 reported on the Saturday of a given epiweek.
 
+Predictions for this target will be compared to the CDC estimates of weekly 
+cumulative deaths, which are derived form a model that adjust for underreporting
 
 #### cum hosp
 
