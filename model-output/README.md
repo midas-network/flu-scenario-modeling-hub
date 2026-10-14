@@ -332,13 +332,17 @@ A week-ahead scenario should represent the total number of new deaths on
 the dates they occurred, not on the date they were reported (from Sunday through 
 Saturday, inclusive).
 
-Predictions for this target will be evaluated compared to the number of new
-deaths, as recorded by the CDC multiplier model (i.e., true mortality burden 
-from the pyramid). These are real-time model estimates updated weekly during 
-the influenza season. The model relies on influenza deaths reported in the
-hospitals via the FluSurv-NET system, adjusted for under testing of flu in 
-the hospital and the proportion of deaths occurring outside of the hospital. 
-There is no state detail.
+Predictions for this target will be summed throughout the season and compared 
+to the cumulative number of deaths estimated by the CDC multiplier model (i.e., 
+true mortality burden from the pyramid). These are real-time model estimates of 
+cumulative deaths updated weekly during the influenza season. The model relies 
+on influenza deaths reported in the hospitals via the FluSurv-NET system, 
+adjusted for under testing of flu in the hospital and the proportion of deaths 
+occurring outside of the hospital. There is no state detail. Calibration data 
+for deaths is provided in the 
+[auxiliary data repository](https://github.com/midas-network/flu-scenario-modeling-hub_resources) 
+in the form of weekly estimates of cumulative deaths, with confidence intervals 
+(since it comes from a model).
 
 
 #### inc ed visit
