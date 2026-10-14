@@ -409,7 +409,7 @@ abstract.**
 | Scenario A. Optimistic, pre-COVID19, vaccine coverage                                | optVax                       | A-2026-09-29 |
 | Scenario B. Business as usual vaccine coverage                                       | usualVax                     | B-2026-09-29 |
 | Scenario C. Business as usual vaccine coverage among adults, no children vaccination | usualVaxAdults_noVaxChildren | C-2026-09-29 |
-| Scenario D. No vaccination counterfactual                                            | noVax                        | C-2026-09-29 |
+| Scenario D. No vaccination counterfactual                                            | noVax                        | D-2026-09-29 |
 
 - **Due date**: Tuesday October 20, 2026
 - **End date for fitting data**: Between Saturday September 26, 2026 and Saturday October 3, 2026
