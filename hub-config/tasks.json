@@ -201,7 +201,7 @@
               "target_keys": {
                 "target": "S0_A"
               },
-              "description": "Proportion of individuals who are susceptible to Influenza Ainfection on the first day of the projection period",
+              "description": "Proportion of individuals who are susceptible to Influenza A infection on the first day of the projection period",
               "target_type": "continuous",
               "is_step_ahead": false
             },
@@ -789,7 +789,7 @@
               "target_keys": {
                 "target": "S0_A"
               },
-              "description": "Proportion of individuals who are susceptible to Influenza Ainfection on the first day of the projection period",
+              "description": "Proportion of individuals who are susceptible to Influenza A infection on the first day of the projection period",
               "target_type": "continuous",
               "is_step_ahead": false
             },

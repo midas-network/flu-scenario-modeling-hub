@@ -316,7 +316,7 @@ submission stage.
   [NHSN Weekly Hospital Respiratory Dataset](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data). 
   This dataset has previously been updated weekly and covers 2020-present. Weekly 
   hospitalizations should be based on the 
-  `“previous_day_admission_influenza_confirmed”`` variable, without any adjustment 
+  `“previous_day_admission_influenza_confirmed”` variable, without any adjustment 
   for reporting (=raw data from NHSN dataset to be projected). A current 
   version of the weekly aggregated data 
   [has been posted here](https://github.com/midas-network/flu-scenario-modeling-hub/blob/main/target-data/time-series.csv). 
@@ -333,7 +333,7 @@ submission stage.
 
 - Weekly national incident deaths, from the CDC multiplier model (i.e., true 
 mortality burden from the pyramid). These are real-time model estimates updated 
-weekly during the influenza season.  The model relies on influenza deaths reported 
+weekly during the influenza season. The model relies on influenza deaths reported 
 in the hospitals via the FluSurv-NET system, adjusted for under testing of flu in 
 the hospital and the proportion of deaths occurring outside of the hospital. There 
 is no state detail. Preliminary estimates from the CDC burden model suggest that 
