@@ -493,8 +493,9 @@ The id sample number is input via two columns:
 
 Both columns should only contain integer number. 
 
-The submission file is expected to have 100 simulation samples 
-(or trajectories) for each "group". 
+The submission file is expected to have between 300 to 600 simulation samples 
+(or trajectories) for each "group". (past rounds might expected less samples,
+please verify the round asssociated documentation)
 
 For example, if a round is required to have the trajectories grouped at least by 
 `"age_group"` and `"horizon"`, so it is required that the combination of 
