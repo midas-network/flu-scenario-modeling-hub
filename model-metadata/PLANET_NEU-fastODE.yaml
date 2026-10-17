@@ -1,0 +1,20 @@
+team_name: "PLANET group, Northeastern University"
+team_abbr: "PLANET_NEU"
+model_name: "fastODE"
+model_abbr: "fastODE"
+model_version: "2026-10-16"
+model_contributors: [
+  {
+    "name": "Srivastava, Ajitesh",
+    "affiliation": "Northeastern University",
+    "email": "aji.srivastava@northeastern.edu"
+  }
+]
+website_url: "https://scc-usc.github.io/SMH-web/Flu2026-27_Round1/"
+repo_url: "https://github.com/scc-usc/SMH-web"
+license: "cc-by-4.0"
+team_funding: "None"
+methods: "Three-strain (H1N1, H3N2, B), five-age compartmental model per state, calibrated jointly to two seasons of NHSN admissions by exact-ODE optimization; 300 paired draws from the fitted posterior curvature."
+data_inputs: "NHSN weekly influenza hospital admissions by state and age group (Nov 2024 - Oct 2026); CDC FluView public health laboratory subtype counts (national); CDC influenza burden death estimates (2024-25, 2025-26); hub vaccination coverage scenarios; CDC ILINet (2010-2026) for the timing of past holiday surges; age-structured contact matrices by setting."
+methods_long: "Deterministic compartmental model with three co-circulating strains (A/H1N1, A/H3N2, B) and five age groups (0-4, 5-17, 18-49, 50-64, 65+), run independently for the US and each of the 50 states and DC with parameters shared across locations where they describe the virus or the vaccine (effectiveness, waning, cross-protection, severity by age and strain, strain transmissibility ratios, holiday mixing) and location-specific where they describe the population (H1N1 reproduction number, starting susceptibility and seeding per strain, reporting scale, noise). Per age and strain: S -> I (no exposed class; 3.5-day infectious period), I -> R, R -> S waning, S -> V vaccination from the scenario coverage curves with a leaky vaccine, V -> S vaccine waning. Infection with one A subtype moves people, vaccinated or not, into a partially cross-protected class for the other A subtype that wanes over months. A hospital pipeline converts infections into admissions by age and strain (hospitalizations per infection by age for H1N1, with age-specific H3N2 and B multipliers) and admissions into deaths. Vaccine effectiveness against hospitalization is fixed at the hub's 50% in every scenario; effectiveness against infection is estimated. Seasonality is a fixed contact calendar: age-structured contacts by setting (home, school, work, other) with school contacts switched off over the winter break (Dec 21 - Jan 4) and summer (Jun 15 - Aug 24), a pre-holiday mixing window (Dec 8-24) that multiplies 'other' contacts by an estimated factor, and an estimated winter-break factor on work and other contacts; no climate term. Calibration: weekly admissions by age for all 52 locations (negative binomial), national lab subtype shares (Dirichlet-multinomial) and the CDC seasonal death ranges (log-normal) from Nov 9, 2024 to Oct 3, 2026, fitted by L-BFGS with exact gradients through a batched GPU ODE solve of all locations at once, refined with Newton steps on the exact Hessian; parameter uncertainty from the curvature (Laplace approximation) at the optimum, with hard bounds on vaccine effectiveness against infection (2-32%), vaccine protection duration (4-8 months) and infection-induced immunity (6 months - 3 years). Projections: 300 draws from the Laplace posterior, each solved for all four scenarios with the same parameters and the same calibration-period vaccination (scenario B through Oct 3, 2026), so trajectories are paired across scenarios; each draw also shifts the 2026-27 pre-holiday mixing window by the surge timing of one of 14 past seasons (ILINet 2010-2026, relative to 2025-26), and reported admissions carry negative-binomial reporting noise with the fitted dispersion. No spatial coupling between locations beyond the shared parameters. An interactive page shows the fit, every parameter with its fitted value and 95% range, and the scenario trajectories, and re-solves the model in the browser when parameters are changed."
+citation: ""
