@@ -1,4 +1,4 @@
-## Influenza Round 1 2025-26: Vaccine Coverage - Vaccine impact and pre-season projections for the 2025-26 season
+## Influenza Round 1 2026-27: Vaccine Coverage - Vaccine impact and pre-season projections for the 2026-27 season
 
 
 The primary goal of Round 1 of 2026-27 is to evaluate the impact of flu 
@@ -6,7 +6,7 @@ vaccination under different vaccination regimes and assess the direct and
 indirect benefits of children vaccination. An additional goal is to provide 
 pre-season projections for the upcoming influenza season at a time when flu 
 activity is low, similarly to prior influenza rounds. We will consider 4 
-coverage levels over a 35-week period, running Sun Oct 11, 2026 to Sat June 5, 
+coverage levels over a 35-week period, running Sun Oct 4, 2026 to Sat June 5, 
 2027. 
 
 
@@ -166,10 +166,10 @@ should have the same initial calibration conditions.
 
 #### Timeline:
 
-**ROUND 1 FLU 2025-26**
+**ROUND 1 FLU 2026-27**
 
 - **Scenarios set (no changes after):** *Thursday, October 1, 2026*
-- **Projections period:** *Sunday, October 4, 2026 - Saturday June 5, 2026*
+- **Projections period:** *Sunday, October 4, 2026 - Saturday June 5, 2027*
 - **Projections due:** *Tuesday, October 20, 2026*
 - **Report finalized:** *No later than Friday, Nov 6, 2026*
 
@@ -235,12 +235,13 @@ vaccination should aggregate to specifications in scenarios
 
 In this round, we will **require submission of 300-600 individual trajectories 
 for each target while submission of quantiles is optional**. As a result, the only 
-required targets for trajectories will be weekly incident hospitalizations and weekly 
-deaths. Estimates of cumulative counts can be obtained from weekly trajectories and hence 
-we do not require trajectories for cumulative counts. Similarly peak targets (peak 
-hospitalization magnitude and peak timing) can be reconstructed from weekly trajectories. 
-Teams who wish to submit quantiles along with trajectories should provide quantiles for 
-weekly and cumulative counts, as well as for hospitalization peak size and peak timing. 
+required targets for trajectories will be weekly incident hospitalizations. Weekly 
+deaths targets are optionals. Estimates of cumulative counts can be obtained from 
+weekly trajectories and hence we do not require trajectories for cumulative counts. 
+Similarly peak targets (peak hospitalization magnitude and peak timing) can be 
+reconstructed from weekly trajectories. Teams who wish to submit quantiles along 
+with trajectories should provide quantiles for weekly and cumulative counts, as 
+well as for hospitalization peak size and peak timing. 
 
 
 We require that simulations are paired across time, age group, targets (deaths, 
@@ -258,7 +259,7 @@ submission stage.
   [NHSN Weekly Hospital Respiratory Dataset](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data). 
   This dataset has previously been updated weekly and covers 2020-present. Weekly 
   hospitalizations should be based on the 
-  `“previous_day_admission_influenza_confirmed”`` variable, without any adjustment 
+  `“previous_day_admission_influenza_confirmed”` variable, without any adjustment 
   for reporting (=raw data from NHSN dataset to be projected). A current 
   version of the weekly aggregated data 
   [has been posted here](https://github.com/midas-network/flu-scenario-modeling-hub/blob/main/target-data/time-series.csv). 
@@ -275,7 +276,7 @@ submission stage.
 
 - Weekly national incident deaths, from the CDC multiplier model (i.e., true 
 mortality burden from the pyramid). These are real-time model estimates updated 
-weekly during the influenza season.  The model relies on influenza deaths reported 
+weekly during the influenza season. The model relies on influenza deaths reported 
 in the hospitals via the FluSurv-NET system, adjusted for under testing of flu in 
 the hospital and the proportion of deaths occurring outside of the hospital. There 
 is no state detail. Preliminary estimates from the CDC burden model suggest that 
@@ -352,7 +353,7 @@ abstract.**
 | Scenario A. Optimistic, pre-COVID19, vaccine coverage                                | optVax                       | A-2026-09-29 |
 | Scenario B. Business as usual vaccine coverage                                       | usualVax                     | B-2026-09-29 |
 | Scenario C. Business as usual vaccine coverage among adults, no children vaccination | usualVaxAdults_noVaxChildren | C-2026-09-29 |
-| Scenario D. No vaccination counterfactual                                            | noVax                        | C-2026-09-29 |
+| Scenario D. No vaccination counterfactual                                            | noVax                        | D-2026-09-29 |
 
 - **Due date**: Tuesday October 20, 2026
 - **End date for fitting data**: Between Saturday September 26, 2026 and Saturday October 3, 2026
@@ -383,3 +384,4 @@ abstract.**
       trajectories.
     - For quantiles (optional submission) We ask for 0.01, 0.025, 0.05, every 
       5% to 0.95, 0.975, and 0.99. 
+
