@@ -31,5 +31,5 @@ model_contributors: [
 ]
 license: "cc-by-4.0"
 methods: "We develop an age stratified model that explicitly tracks the immunity caused by natural infections and vaccination and its impact on the average chances of infection, hospitalization and death."
-model_version: "1.0"
+model_version: "3.0"
 website_url: "https://covid-19.tacc.utexas.edu/"
