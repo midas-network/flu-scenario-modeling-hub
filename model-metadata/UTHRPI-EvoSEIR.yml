@@ -1,0 +1,34 @@
+team_name: "University of Texas Health Science Center at Houston - Rensselaer Polytechnic Institute"
+team_abbr: "UTHRPI"
+model_name: "Evolutionary SEIR model"
+model_abbr: "EvoSEIR"
+model_version: "1.0"
+model_contributors: [
+  {
+    "name": "Boya Peng",
+    "affiliation": "University of Texas Health Science Center at Houston",
+    "email": "boya.peng@uth.tmc.edu"
+  },
+  {
+    "name": "Junfeng Wu",
+    "affiliation": "Rensselaer Polytechnic Institute",
+    "email": "wuj26@rpi.edu"
+  },
+  {
+    "name": "Yinan Wang",
+    "affiliation": "Rensselaer Polytechnic Institute",
+    "email": "wangy88@rpi.edu"
+  },
+  {
+    "name": "Kaiming Bi",
+    "affiliation": "University of Texas Health Science Center at Houston",
+    "email": "kaiming.bi@uth.tmc.edu"
+  },
+]
+website_url: "https://sph.uth.edu/research/research-labs/?lab=g8vTJBgwLwerFNWhWxkTJw=="
+license: "cc-by-4.0"
+citation: ""
+team_funding: ""
+data_inputs: "CDC/NHSN weekly incident influenza hospitalization surveillance by state (2021-22 through 2025-26 seasons); Census Bureau state population and age-structure (ACS DP05) estimates; CDC FluVaxView/IIS state- and national-level influenza vaccination coverage curves; subtype-specific vaccine effectiveness against infection from CDC's US Flu VE; subtype-specific infection-hospitalization ratios and overall vaccine effectiveness against hospitalization from CDC clinical burden/hospital-surveillance estimates; CDC national cumulative influenza death burden estimates; Flu Scenario Modeling Hub Round 7 vaccination-coverage scenario curves (origin_date 2026-10-04)."
+methods: "Three-strain (H1/H3/B) age-split SEIRS model, cross-classified by prior-season immunity history and current-season vaccination, calibrated per state via a multi-season chain against NHSN hospitalization data; deaths derived from a nationally-fit hospitalization-death ratio."
+methods_long: "The model is a deterministic, continuous-time compartmental model for three co-circulating influenza subtypes (A/H1N1, A/H3N2, B), stratified by an 8-level prior-season immunity history (naive, infected-H1/H3/B, vaccinated, vaccinated+infected-H1/H3/B) and by current-season vaccination status, with the population additionally split into child and adult sub-pools (US Census ACS DP05) that experience separate vaccination hazards while sharing transmission, severity, and vaccine-effectiveness parameters. Subtype-specific susceptibility reductions from prior infection and vaccination are encoded via the immunity-history cross-classification, with subtype-specific vaccine effectiveness against infection from CDC's US Flu VE, and vaccine effectiveness against hospitalization (given infection) derived from an overall CDC hospitalization-VE estimate combined with each subtype's effectiveness against infection. Hospitalization is governed by subtype-specific infection-hospitalization ratios fixed from CDC clinical burden/surveillance data. For each of 50 states plus DC, the transmission rate, a reporting rate, and epidemic timing were calibrated sequentially across the 2021-22 through 2025-26 seasons against NHSN-reported weekly hospitalizations, with population carried forward season-to-season (including residual cross-immunity and population growth/decline). The 2026-27 forecast seeds each state's calibrated end-of-2025-26 immune landscape, applies Flu Scenario Modeling Hub Round 7 vaccination-coverage curves under 4 scenarios (higher uptake, status-quo, status-quo-adult-only, no vaccination), and propagates parameter uncertainty via 300 Monte Carlo draws per scenario. Weekly incident deaths are derived per draw, from that same draw's own simulated reported-hospitalization trajectory via a single hospitalization-death ratio and a hospitalization-to-death delay, fit against CDC's national underreporting-adjusted cumulative death burden estimates for the 2022-23 through 2025-26 seasons (averaged across seasons), so death and hospitalization outputs for a given simulation remain mutually consistent by construction. Uncertainty is represented via the empirical sample distribution across the 300 Monte Carlo draws per state/scenario; spatial correlation across states is not explicitly modeled, though all states share national vaccine-effectiveness and severity parameters."
