@@ -13,7 +13,7 @@ counterfactual no–vaccination scenarios, which will allow estimation of the
 direct and indirect benefits of vaccination in different age groups. Scenarios 
 will follow a 3\*1 structure:
 
-<img src="https://raw.githubusercontent.com/midas-network/covid19-scenario-modeling-hub/main/auxiliary-data/rounds/round6_viz/flu_round6.png">
+<img src="https://raw.githubusercontent.com/midas-network/flu-scenario-modeling-hub/main/auxiliary-data/rounds/round6_viz/flu_round6.png">
 
 
 #### Uncertainty regarding influenza epidemiology:

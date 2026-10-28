@@ -1,0 +1,38 @@
+team_name: "CEPH Lab at Indiana University"
+team_abbr: "CEPH"
+model_name: ASTRA_FLU
+model_abbr: ASTRA_FLU
+model_contributors: [
+    {
+        "name": "Marco Ajelli",
+        "affiliation": "Indiana University Bloomington",
+        "email": "majelli@iu.edu"
+    },
+    {
+        "name": "Pablo Valgañón",
+        "affiliation": "Indiana University Bloomington",
+        "email": "pavalga@iu.edu"
+    },
+    {
+        "name": "Shreeya Mhade",
+        "affiliation": "Indiana University Bloomington",
+        "email": "smhade@iu.edu"
+    },
+    {
+        "name": "Paulo C. Ventura",
+        "affiliation": "Indiana University Bloomington",
+        "email": "pventura@iu.edu"
+    },
+    {
+        "name": "Maria Litvinova",
+        "affiliation": "Indiana University Bloomington",
+        "email": "malitv@iu.edu"
+    }
+]
+license: "CC-BY_SA-4.0"
+methods: "Age-structured model of cocirculation of influenza viruses"
+methods_long: "The model framework is based on ordinary differential equations and age-stratified contact matrices derived from both macro (census) and micro (survey) data sources. The model considers a complete-history of co-circulation of influenza types/subtypes (H1N1, H3N2 and B). The posterior distributions of the parameters regulating virus transmissibility and age-dependent infection-to-hospitalization risks were calibrated using hospitalization data from NHSN for the 2022-2023, 2023-2024, 2024-2025 and 2025-2026 seasons."
+model_version: "1.0"
+website_url: "https://ceph-lab.github.io/"
+team_funding: "Cooperative agreement CDC-RFA-FT-23-0069 from the CDC’s Center for Forecasting and Outbreak Analytics; Cooperative Agreement no. NU38PW000005 of the Centers for Disease Control and Prevention (CDC) and the Council of State and Territorial Epidemiologists (CSTE)."
+data_inputs: "NHSN Weekly Hospital Respiratory Data for flu; demographic data from this repository; contact pattern data from Mistry et al. Nature Communications 2021."

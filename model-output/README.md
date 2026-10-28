@@ -332,10 +332,17 @@ A week-ahead scenario should represent the total number of new deaths on
 the dates they occurred, not on the date they were reported (from Sunday through 
 Saturday, inclusive).
 
-Predictions for this target will be evaluated compared to the number of new
-deaths, as recorded by the National Center for Health Statistics (NCHS) as 
-distributed by the
-[FluView Interactive - Mortality CDC dashboard](https://gis.cdc.gov/grasp/fluview/mortality.html). 
+Predictions for this target will be summed throughout the season and compared 
+to the cumulative number of deaths estimated by the CDC multiplier model (i.e., 
+true mortality burden from the pyramid). These are real-time model estimates of 
+cumulative deaths updated weekly during the influenza season. The model relies 
+on influenza deaths reported in the hospitals via the FluSurv-NET system, 
+adjusted for under testing of flu in the hospital and the proportion of deaths 
+occurring outside of the hospital. There is no state detail. Calibration data 
+for deaths is provided in the 
+[auxiliary data repository](https://github.com/midas-network/flu-scenario-modeling-hub_resources) 
+in the form of weekly estimates of cumulative deaths, with confidence intervals 
+(since it comes from a model).
 
 
 #### inc ed visit
@@ -361,6 +368,8 @@ the week that is N weeks after `origin_date` (since start of the simulation).
 A week-ahead scenario should represent the cumulative number of deaths
 reported on the Saturday of a given epiweek.
 
+Predictions for this target will be compared to the CDC estimates of weekly 
+cumulative deaths, which are derived form a model that adjust for underreporting
 
 #### cum hosp
 
@@ -490,8 +499,9 @@ The id sample number is input via two columns:
 
 Both columns should only contain integer number. 
 
-The submission file is expected to have 100 simulation samples 
-(or trajectories) for each "group". 
+The submission file is expected to have between 300 to 600 simulation samples 
+(or trajectories) for each "group". (past rounds might expected less samples,
+please verify the round asssociated documentation)
 
 For example, if a round is required to have the trajectories grouped at least by 
 `"age_group"` and `"horizon"`, so it is required that the combination of 

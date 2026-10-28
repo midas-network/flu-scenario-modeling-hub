@@ -40,18 +40,22 @@ df_ed_demo <- read.csv(paste0(cdc_api,
   dplyr::mutate(
     age_group =
       dplyr::case_when(demographics_values == "0-4 years" ~ "0-4",
+                       demographics_values == "<1 year" ~ "0-0.99",
+                       demographics_values == "1-4 years" ~ "1-4",
                        demographics_values == "5-17 years" ~ "5-17",
                        demographics_values == "65+ years" ~ "65-130",
-                       demographics_values == "18-64 years" ~ "18-64"),
+                       demographics_values == "18-64 years" ~ "18-64",
+                       demographics_values == "18-49 years" ~ "18-49",
+                       demographics_values == "50-64 years" ~ "50-64"),
     target = "% ed visit", location = "US") |>
   dplyr::select(location, date = week_end, observation = percent_visits,
                 age_group, target)
 
 df_ed_state <- read.csv(paste0(cdc_api,
                                "vutn-jzwm/rows.csv?&accessType=DOWNLOAD")) |>
-  dplyr::filter(pathogen == "Influenza") |> 
+  dplyr::filter(pathogen == "Influenza") |>
   dplyr::mutate(location = location2number[geography],
-                age_group = "0-130", target = "inc ed visit") |>
+                age_group = "0-130", target = "% ed visit") |>
   dplyr::select(location, date = week_end, observation = percent_visits,
                 age_group, target)
 
@@ -67,6 +71,11 @@ file.rename(old_files, arch_files)
 
 # Write output -----------------------------------------------------------------
 df_tot <- rbind(df_nhsn, df_ed)
+
+# Check age group
+if (any(is.na(df_tot$age_group)))
+  stop("Some age groups are not being assigned properly, please check")
+
 write.csv(df_tot, "target-data/time-series.csv",
           row.names = FALSE)
 

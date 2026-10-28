@@ -51,8 +51,10 @@ validate_model_output <- function(x, repo_name, gh_pr_number, gh_token,
   if (!(round_id %in% names(val_param))) {
     msg <- paste0("The round id in the submission file was not recognized, ",
                   "please verify")
-    if (post_msg) post_message(list("msg" = msg), repo_name, gh_pr_number,
-                               gh_token)
+    if (post_msg) {
+      msg <- paste(msg, collapse = "\n\n")
+      writeLines(msg, paste0("comment.txt"))
+    }
     stop(msg)
   }
   if (grepl("Ensemble", x)) {
@@ -60,22 +62,26 @@ validate_model_output <- function(x, repo_name, gh_pr_number, gh_token,
                 msg = paste0(basename(x), " seems to be an Ensemble file",
                              " - validation not run")))
   }
-  
+
   val_param <- val_param[[round_id]]
   # partition validation
-  if (length(unlist(strsplit(x, "/"))) > 2) {
+  if (!grepl("\\.", basename(x))) {
     if (!"partition" %in% names(val_param)) {
       msg <- paste0("The model output file seems to be partitioned, partition",
                     "not accepted for this round, please verify")
-      if (post_msg) post_message(list("msg" = msg), repo_name, gh_pr_number,
-                                 gh_token)
+      if (post_msg) {
+        msg <- paste(msg, collapse = "\n\n")
+        writeLines(msg, paste0("comment.txt"))
+      }
       stop(msg)
     }
+    x_path <- dirname(x)
     test_mod_files <-
-      SMHvalidation::validate_part_file(".", x, val_param$partition) |>
+      SMHvalidation::validate_part_file(".", x_path, val_param$partition,
+                                        round_id = round_id) |>
       process_test(file_path = x)
     test_mod_content <- do.call(validate_subm,
-                                c(val_param, x = x, hub_path = hub_path,
+                                c(val_param, x = x_path, hub_path = hub_path,
                                   round_id = round_id))
   } else {
     if ("partition" %in% names(val_param)) val_param$partition <- NULL
@@ -119,6 +125,7 @@ pr_validate <- function(repo_name, gh_pr_number, gh_commit_sha, hub_path,
   }
   if (!is.null(pr_files))
     pr_filenames <- select_files(pr_files, commit = commit)
+  pr_mess <- NULL
   # Metadata
   if (any(grepl("model-metadata/", unique(pr_filenames)))) {
     meta_files <- extract_files(pr_files, "model-metadata/", commit = commit)
@@ -128,22 +135,29 @@ pr_validate <- function(repo_name, gh_pr_number, gh_commit_sha, hub_path,
                                                            .x) |>
                    process_test(file_path = .x, section = "Model Metadata"))
   } else {
-    test_meta <-  list(err = FALSE, msg = "No metadata files update")
+    test_meta <- list(list(err = FALSE, msg = "No metadata files update"))
   }
-  if (post_msg) post_message(test_meta, repo_name, gh_pr_number, gh_token)
+  if (post_msg) pr_mess <- c(pr_mess, purrr::map(test_meta, "msg"))
   # Model output
   if (any(grepl("model-output/", unique(pr_filenames)))) {
     mod_files <- extract_files(pr_files, "model-output/", commit = commit)
+    mod_files <- unique(purrr::map_chr(mod_files,
+                                       ~paste(strsplit(.x, "/")[[1]][1:2],
+                                              collapse = "/")))
     test_mod <-
       purrr::map(mod_files,
                  ~ validate_model_output(.x, repo_name, gh_pr_number, gh_token,
                                          hub_path = hub_path,
                                          post_msg = post_msg))
   } else {
-    test_mod <- list(err = FALSE,
-                     msg = "No model output submission files update")
+    test_mod <- list(list(err = FALSE,
+                          msg = "No model output submission files update"))
   }
-  if (post_msg) post_message(test_mod, repo_name, gh_pr_number, gh_token)
+  if (post_msg) {
+    pr_mess <- c(pr_mess, purrr::map(test_mod, "msg")) |> purrr::compact()
+    pr_mess <- paste(pr_mess, collapse = "\n\n")
+    writeLines(pr_mess, paste0("comment.txt"))
+  }
   # Results
   if (any(unlist(purrr::map(c(test_mod, test_meta), "err")))) {
     stop("The submission contains one or multiple issues or warnings.")
