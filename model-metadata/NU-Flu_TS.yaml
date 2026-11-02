@@ -1,0 +1,24 @@
+team_name: "Northeastern University"
+team_abbr: "NU"
+model_name: "NU-Flu_TS"
+model_abbr: "Flu_TS"
+model_contributors: [
+  {
+    "name": "Amanda Perofsky",
+    "affiliation": "Northeastern University",
+    "email": "a.perofsky@northeastern.edu"
+  },
+  {
+    "name": "Cécile Viboud",
+    "affiliation": "Fogarty International Center, National Institutes of Health",
+    "email": "viboudc@mail.nih.gov"
+  }
+]
+license: "CC-BY-4.0"
+methods: "Dynamic harmonic regression with ARIMA errors and exogenous covariates for vaccination coverage x effectiveness, influenza A subtype circulation, and lagged influenza infections."
+methods_long: "We model weekly influenza hospital admissions in each location using dynamic harmonic regression (Fourier terms) with ARIMA errors and exogenous covariates for vaccination coverage and effectiveness, influenza A(H3N2) circulation, and 1-2 week lagged influenza 'infections'. Infections are estimated by fitting semi-mechanistic Bayesian renewal models to ILI+ (ILI x % positive). Models are calibrated on 6-12 years of historical data depending on location; seasons before NHSN reporting are reconstructed from FluSurv-NET hospitalization rates where available and outpatient ILI rates elsewhere, rescaled to NHSN admission counts. For projections, future infections and subtype circulation are drawn from historical analog seasons aligned to current-season timing, and Hub-specified vaccination curves enter as covariates. Candidate models are screened for fit and plausibility, and uncertainty is represented by bootstrapped trajectories paired across scenarios. This modeling framework is a continuation of the NIH-Flu_TS model submitted in prior seasons."
+model_version: "2026-11-02"
+website_url: "https://aperofsky.github.io/"
+team_funding: "We acknowledge support from cooperative agreement CDC-RFA-FT-23-0069 from the CDC's Center for Forecasting and Outbreak Analytics."
+data_inputs: "Weekly incident CDC NHSN influenza-coded admissions, weekly CDC FluSurv-NET hospitalization rates, weekly syndromic and virologic surveillance data from CDC FluView, vaccination coverage estimates from the National Center for Immunization and Respiratory Diseases, Hub-specified scenario vaccination curves, and seasonal vaccine effectiveness estimates from published literature and CDC."
+citation: "N/A"
