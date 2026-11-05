@@ -1,0 +1,108 @@
+team_name: "UVA Biocomplexity Institute"
+team_abbr: "UVA"
+model_name: "ESCAPE-Flu"
+model_abbr: "escape_flu"
+model_version: "2026-11-05"
+model_contributors:
+  [
+    {
+      "name": "Bryan Lewis",
+      "affiliation": "University of Virginia, Biocomplexity Institute",
+      "email": "brylew@virginia.edu",
+    },
+    {
+      "name": "Parantapa Bhattacharya",
+      "affiliation": "University of Virginia, Biocomplexity Institute",
+      "email": "parantapa@virginia.edu",
+    },
+    {
+      "name": "Srinivasan Venkatramanan",
+      "affiliation": "University of Virginia, Biocomplexity Institute",
+      "email": "srini@virginia.edu",
+    },
+    {
+      "name": "Aniruddha Adiga",
+      "affiliation": "University of Virginia, Biocomplexity Institute",
+      "email": "aa5dw@virginia.edu",
+    },
+    {
+      "name": "Jiangzhuo Chen",
+      "affiliation": "University of Virginia, Biocomplexity Institute",
+      "email": "chenj@virginia.edu",
+    },
+    {
+      "name": "Madhav Marathe",
+      "affiliation": "University of Virginia, Biocomplexity Institute",
+      "email": "marathe@virginia.edu",
+    },
+  ]
+website_url: "https://biocomplexity.virginia.edu/"
+license: "cc-by-4.0"
+methods: "Agent-based model on state synthetic populations and contact networks with H1N1, H3N2 and B, per-agent immune histories, fit to 2025-26 and early 2026-27 NHSN admissions."
+methods_long: |
+  ESCAPE-Flu is a stochastic, full-population agent-based model run separately for each
+  state (49 states and DC; Alaska is not modelled) on the EpiHiper synthetic population and
+  activity-based contact network (v2.4.0). Transmission occurs along contact edges, so age
+  mixing comes from the network. Three subtypes (A/H1N1, A/H3N2, B) are separate contagions
+  sharing one natural history (S, E, I, A, H, D, R; latent 1-3 d, infectious 2-7 d, 67%
+  symptomatic). Co-infection is allowed, and death from any subtype removes the agent.
+
+  Immunity is per agent and per subtype. Each agent carries the date of its last infection
+  with each subtype, reconstructed from 2022-23 to 2025-26 surveillance: NHSN admissions
+  divided by subtype- and age-specific infection-hospitalization ratios, with the subtype
+  split from FluView/NREVSS public health laboratory data and checked against CDC burden
+  estimates. Each agent also carries a vaccination history. Infection protection is 70%
+  against reinfection with the same subtype, with 20% cross-protection between H1N1 and H3N2
+  and none between A and B. It wanes with a 1-year half-life plus antigenic drift (about 16%
+  per year). A long-term immune fraction (80% protection, half as large in children) is
+  solved per state so that susceptibility on October 4 matches the calibration runs. A
+  next-season immune-escape term (0-30% per subtype) is sampled. Vaccine protection is a
+  separate multiplicative term: 25% against infection plus an additional 33% against
+  hospitalization given infection (50% against hospitalization overall), leaky, waning with a
+  150-day half-life. The hub's Round 1 coverage curves are applied as campaign doses, by state
+  and age, in the simulation, preferentially reaching habitual vaccinators.
+
+  Severity is by subtype and age. P(hospitalization | infection) is an NHSN-anchored age
+  ladder with within-age subtype ratios from FluSurv-NET 2010-19 (Sumner et al. 2023). It is
+  re-anchored per state so the model's admissions by age match NHSN 2024-26 age shares.
+  In-hospital deaths use P(death | hospitalized) from FluSurv-NET by subtype and age, with a
+  3-14 day admission-to-death delay. Submitted deaths are scaled from these to all flu deaths
+  by age-specific ratios fit to CDC's in-season multiplier-model estimates per NHSN admission
+  (2022-26; about 4.9x the in-hospital count), with a drawn national level and age profile.
+
+  Seasonality is a cosine forcing of transmissibility with a sampled peak date and shape, plus
+  subtype-specific lags. Calibration has two stages per state. (1) A 64-point Sobol design of
+  9 fit-season parameters (transmissibility, seasonal amplitude, peak date and shape,
+  background seeding, subtype weights and lags) is scored against NHSN admissions for 2025-26
+  (negative-binomial likelihood on all-age and subtype-split weekly admissions). (2) For the
+  8 best fits, 2026-27 parameters (transmissibility multiplier, seasonal peak, subtype shares
+  and seeding windows, immune escape, early H1N1 seeding pulse in several states) are drawn
+  from priors informed by 2010-26 FluView subtype history and early-season evidence. These
+  candidates are simulated to October 10 and weighted by their likelihood against NHSN
+  admissions through the October 3, 2026 cutoff; no data after the cutoff are used.
+  Resampled members are run in full under scenario B. A guard keeps 60 runs per state: runs
+  whose season total or peak exceeds the state's largest season since 2022-23 lose weight
+  from 1.5x and are excluded beyond 2x, and runs peaking before November 1 are excluded,
+  since no state has peaked earlier since 2022-23. The kept runs are then run in scenarios A,
+  C and D with identical parameters.
+
+  Uncertainty and spatial correlation. Uncertainty comes from the parameter ensemble (fit and
+  next-season parameters), simulation stochasticity, and severity replicates. Each run is
+  expanded to 300 trajectories per state, 5 per run, with stochastic_run 1 = the run as
+  simulated, by post-processing:
+  admissions are rescaled by drawn subtype, age and state severity multipliers and by weekly
+  AR(1) noise after October 3, preserving totals through the cutoff, and deaths are computed
+  from the rescaled admissions with a perturbed P(death | hospitalized), then scaled to all
+  deaths with a drawn level and age profile. The same draws are used in all four scenarios, so
+  trajectories are paired across scenarios, ages and targets (run_grouping = run,
+  stochastic_run = replicate). States are simulated independently, without commuting between
+  them. National trajectories are per-sample sums of the state trajectories, and the national
+  part of the severity draws is shared across states within a national sample, which induces
+  between-state correlation in severity.
+
+  Known limitations. Deaths are scaled to all deaths in post-processing, not simulated outside
+  hospital, and follow CDC's in-season estimates, which have run higher than its final ones.
+  The national series excludes Alaska. The age distribution of infections leans
+  toward school-age children because of the contact network.
+data_inputs: "NHSN Hospital Respiratory Data (weekly influenza admissions by state and age, via the SMH target data through 2026-10-03); FluView/NREVSS clinical and public health laboratory subtype data; NSSP ED visit data; CDC influenza burden estimates and burden-model inputs; CDC in-season cumulative influenza death estimates 2022-26 (SMH resources); FluSurv-NET hospitalization and in-hospital death rates by subtype and age (Sumner et al. 2023); SMH Round 1 2026-27 vaccination coverage curves; EpiHiper synthetic populations and activity-based contact networks v2.4.0."
+citation: "University of Virginia Biocomplexity Institute. ESCAPE: an agent-based model of respiratory virus transmission and immunity on synthetic populations. 2026. https://github.com/NSSAC/escape-covid19-smh"
