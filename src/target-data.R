@@ -29,7 +29,7 @@ location2number <- setNames(c(model_location$location, "US"),
 
 # NHSN Hospitalization Data ----------------------------------------------------
 df_nhsn <- extract_nhsn(hosp_report = TRUE, pathogen = "Influenza") |>
-  standard_nhsn(location2number, abbr2location) |>
+  standard_nhsn(location2number, abbr2location, report_limit = NULL) |>
   dplyr::mutate(target = "inc hosp")
 
 # ED Visit ---------------------------------------------------------------------
