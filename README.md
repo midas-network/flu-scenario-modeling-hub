@@ -490,6 +490,10 @@ and was until May 11, 2024. During May 11-Nov 2, 2024, reporting was paused
 and less than 75% of hospitals reported. Mandatory reporting resumed again on 
 Nov 11, 2024. Accordingly, the data before February 2, 2021, and between May 
 1-Nov 11, 2024, should be treated with caution.
+Starting Nov 8, 2026, all the data are included in the final version
+of the target-data. Previous to that date, only data associated with
+a reporting percent greater than 75% were included. The reporting
+threshold was removed on Nov 6, 2026. 
 
 Unlike flu admissions, flu deaths are no longer mandatory to report in this 
 system and hence a different source of data will be used for deaths.
