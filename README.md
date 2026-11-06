@@ -360,6 +360,15 @@ for seasonal estimates for past seasons.
       of projections, on October 4, 2026. This is similar to prior influenza rounds. 
     - State-level peak hospitalizations.
     - State-level timing of peak hospitalizations.
+    
+- In the 2026-27 round of flu projections, we are inviting teams to contribute 
+  additional targets for an exploratory project led by the California Department 
+  of Public Health on influenza health economics questions. Weekly trajectories 
+  of age-specific deaths for CA are requested for this analysis. Historical 
+  model-based estimates of age-specific deaths for CA have been provided in the 
+  auxiliary folder to aid calibration, available in the 
+  [flu-scenario-modeling-hub_resources](https://github.com/midas-network/flu-scenario-modeling-hub_resources/tree/main/Rd7_datasets).
+  Details on submission format are provided [here](https://github.com/midas-network/flu-scenario-modeling-hub/tree/main/model-output/README.md).
 
 ##### State-level variability
 

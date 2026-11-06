@@ -261,6 +261,17 @@ Optional target:
 - cdf:
     - weekly peak timing hospitalization
     
+#### Round specific - additional target
+
+- Round 2026-27 (round 7): weekly incident deaths at California level is also
+accepted.
+
+Please include the additional target(s) in the file as the other targets. All
+the target associated with a round should be in the same file (or partitioned 
+files).
+
+#### Target specifications
+    
 For all targets expect for "peak" targets (peak size hospitalizations, 
 weekly peak timing hospitalization), age-stratification is recommended
 but not required. Overall population (`0-130`) is required, but 
@@ -281,7 +292,7 @@ Values in the `target` column must be one of the following character strings:
 - `"peak time hosp"`: weekly peak timing hospitalization
 
 
-#### inc hosp
+##### inc hosp
 
 This target is the incident (weekly) number of hospitalized cases predicted by
 the model during the week that is N weeks after `origin_date`. 
@@ -295,7 +306,7 @@ hospitalized cases, as reported by the NHSN and available on
 [data.cdc](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data).
 
 
-#### S0
+##### S0
 
 This target is a tag denoting the initial proportion of individuals susceptible 
 to influenza infection on the first day of a given simulation, i.e. on 
@@ -323,7 +334,7 @@ should be set to `NA`.
 There will be no evaluation for this target.
 
 
-#### inc death
+##### inc death
 
 This target is the incident (weekly) number of deaths predicted by the model
 during the week that is N weeks after `origin_date`. 
@@ -345,7 +356,7 @@ in the form of weekly estimates of cumulative deaths, with confidence intervals
 (since it comes from a model).
 
 
-#### inc ed visit
+##### inc ed visit
 
 This target is the incident (weekly) percent of influenza emergency department 
 visit predicted by the model during the week that is N weeks after 
@@ -360,7 +371,7 @@ influenza emergency department visit, as reported by the NSSP and available on
 [data.cdc](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data).
 
 
-#### cum death
+##### cum death
 
 This target is the cumulative number of deaths predicted by the model during 
 the week that is N weeks after `origin_date` (since start of the simulation). 
@@ -371,7 +382,7 @@ reported on the Saturday of a given epiweek.
 Predictions for this target will be compared to the CDC estimates of weekly 
 cumulative deaths, which are derived form a model that adjust for underreporting
 
-#### cum hosp
+##### cum hosp
 
 This target is the cumulative number of incident (weekly) number of
 hospitalized cases predicted by the model during the week that is N weeks
@@ -381,7 +392,7 @@ A week-ahead scenario should represent the cumulative number of hospitalized
 cases reported on the Saturday of a given epiweek.
 
 
-#### peak time hosp
+##### peak time hosp
 
 This target is the cumulative probability of the incident hospitalization peak 
 occurring before or during the week that is N weeks after `origin_date`. For instance 
@@ -396,7 +407,7 @@ Predictions for this target will be evaluated against the week of the peak numbe
 of hospitalized cases, as recorded by the NHSN hospitalized cases 
 (derived from the influenza admissions variable).
 
-#### peak size hosp
+##### peak size hosp
 
 This target is the magnitude of the peak of weekly incident hospitalizations in 
 the model, when considering the full projection period.
