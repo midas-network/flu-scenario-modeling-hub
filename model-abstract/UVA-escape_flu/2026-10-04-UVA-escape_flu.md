@@ -131,7 +131,7 @@ The vaccine reduces the probability of symptomatic illness given infection by an
 None beyond the reduction in infection.
 
 ### VE against mortality (if any effect beyond VE against infection and hospitalization)
-None beyond the reductions in infection and hospitalization.
+None beyond the reductions in infection and hospitalization. In this model all deaths arise from those that are hospitalized.
 
 ### Is the vaccine modeled a leaky or all-of-nothing (if relevant)
 Leaky.
@@ -153,7 +153,7 @@ Vaccine and infection protection are independent multiplicative terms: an agent'
 ### Summarize important changes to the model compared to prior SMH submissions
 The first escape-flu model for a SMH submission was in 2024 and it used the same simulation engine and populations, as well as a similar disease model, however, the calibration and projection approach were a bit different.  Additionally, this escape-flu model uses 3 independent pathogen contagions (the first multi-contagion submission).  These are simultaneously simulated and the two A types have cross immunity with eachother.  Additionally, this escape-flu model uses and individualized immune history approach that allows waning to be assessed at the individual level and to vary based on source of last immunizing event.  This was adapted from the ESCAPE-COVID model submitted to COVID-19 SMH Round 20 (per-agent immune clocks, waning and escape). 
 
-Some specific changes for the flu model:
+Some specific details for the flu model:
 - three subtype contagions with cross-protection;
 - subtype- and age-specific severity from FluSurv-NET;
 - histories built from infections back-calculated from NHSN admissions;
@@ -164,8 +164,8 @@ Update of November 6, 2026 (this version replaces the projections of November 5)
 - The vaccine has no antigenic drift term; protection wanes only with time since the dose.
 - VE against infection was raised from 25% to 43% at full strength.
 - VE now acts on symptomatic illness (46%) instead of on hospitalization given infection (was 33%). Realized VE in simulation is about 23% against infection, 49% against symptomatic illness and 52% against hospitalization, versus about 10%, 10% and 33% before.
-- To keep the 2025-26 fit, the kept runs were re-run with transmissibility x1.16 and hospitalization probability x1.08, and the guardrail was re-applied. States left with fewer than 45 runs were topped up by re-simulating resampled surviving runs (same parameters, new stochastic trajectories) and guarding them again. This leaves 45-59 runs per state instead of 60.
-- The stronger vaccine increases the projected effect of vaccination: scenario B versus D is -38.2% in admissions, versus -19.7% in the first version.
+- To keep the 2025-26 fit, the kept runs were re-run with transmissibility x1.16 and hospitalization probability x1.08, and the guardrail was re-applied. States left with fewer than 45 runs were topped up by re-simulating resampled surviving runs (same parameters, new stochastic trajectories) and guarding them again. This leaves 45-59 runs per state instead of 60 (like in the original submission).
+- The stronger vaccine corrects an under estimate and thus increases the projected effect of vaccination: scenario B versus D is -38.2% in admissions, versus -19.7% in the first version.
 
 ## Other Model Assumptions
 Deaths are scaled to the hub's target, CDC's in-season multiplier-model estimate of all flu deaths, in post-processing; no simulation was re-run. The model's in-hospital deaths (FluSurv-NET P(death | hospitalized) applied to model admissions, ~0.03 per admission) are multiplied by age-specific ratios of all deaths to in-hospital deaths (overall ~4.9x). The ratios come from CDC's in-season cumulative death estimates for 2022-23 to 2025-26 (geometric mean of the 95% bounds) divided by NHSN admissions over the same weeks, which gives 0.14 all deaths per admission (range 0.11-0.18 by season). The age profile comes from CDC's final burden estimates of deaths per hospitalization (2022-25). CDC's final estimates have been lower than its in-season ones (0.08-0.12 per admission), so our deaths may be high relative to final burden estimates. The scaling is the same in all four scenarios, so the scenario differences in deaths follow admissions. Alaska is not modelled and the national total excludes it. Infections lean toward school-age children because of the activity-based contact network; hospitalizations by age are anchored to NHSN.
