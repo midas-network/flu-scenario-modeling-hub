@@ -2,7 +2,7 @@ team_name: "UVA Biocomplexity Institute"
 team_abbr: "UVA"
 model_name: "ESCAPE-Flu"
 model_abbr: "escape_flu"
-model_version: "2026-11-05"
+model_version: "2026-11-06"
 model_contributors:
   [
     {
@@ -54,12 +54,15 @@ methods_long: |
   estimates. Each agent also carries a vaccination history. Infection protection is 70%
   against reinfection with the same subtype, with 20% cross-protection between H1N1 and H3N2
   and none between A and B. It wanes with a 1-year half-life plus antigenic drift (about 16%
-  per year). A long-term immune fraction (80% protection, half as large in children) is
+  per year from the infection date). A long-term immune fraction (80% protection, half as large in children) is
   solved per state so that susceptibility on October 4 matches the calibration runs. A
   next-season immune-escape term (0-30% per subtype) is sampled. Vaccine protection is a
-  separate multiplicative term: 25% against infection plus an additional 33% against
-  hospitalization given infection (50% against hospitalization overall), leaky, waning with a
-  150-day half-life. The hub's Round 1 coverage curves are applied as campaign doses, by state
+  separate multiplicative term: 43% against infection plus an additional 46% against
+  symptomatic illness given infection, leaky, waning with a 150-day half-life from the dose
+  and no drift term. Hospitalization occurs only from symptomatic infection, so VE against
+  hospitalization equals VE against symptomatic illness. Realized over the season in
+  simulation (matched cohort), VE is about 23% against infection, 49% against symptomatic
+  illness and 52% against hospitalization, matching the hub's 50%. The hub's Round 1 coverage curves are applied as campaign doses, by state
   and age, in the simulation, preferentially reaching habitual vaccinators.
 
   Severity is by subtype and age. P(hospitalization | infection) is an NHSN-anchored age
@@ -83,13 +86,19 @@ methods_long: |
   Resampled members are run in full under scenario B. A guard keeps 60 runs per state: runs
   whose season total or peak exceeds the state's largest season since 2022-23 lose weight
   from 1.5x and are excluded beyond 2x, and runs peaking before November 1 are excluded,
-  since no state has peaked earlier since 2022-23. The kept runs are then run in scenarios A,
-  C and D with identical parameters.
+  since no state has peaked earlier since 2022-23. In the November 6 update, the vaccine
+  was revised as above. The 60 kept runs were then re-run with transmissibility x1.16 and
+  hospitalization probability x1.08, which restore the 2025-26 fit season, rather than
+  recalibrated. The guard was re-applied to the re-run seasons. States left with fewer than
+  45 runs were topped up by re-simulating resampled surviving runs (same parameters, new
+  stochastic trajectories) and guarding them again, giving 45-59 runs per state
+  (median 48). The kept runs are run in scenarios A, C and D with
+  identical parameters.
 
   Uncertainty and spatial correlation. Uncertainty comes from the parameter ensemble (fit and
-  next-season parameters), simulation stochasticity, and severity replicates. Each run is
-  expanded to 300 trajectories per state, 5 per run, with stochastic_run 1 = the run as
-  simulated, by post-processing:
+  next-season parameters), simulation stochasticity, and severity replicates. Each state's
+  runs are expanded to 300 trajectories, ceil(300 / runs) per run (6 to 7 per run, by state), with
+  stochastic_run 1 = the run as simulated, by post-processing:
   admissions are rescaled by drawn subtype, age and state severity multipliers and by weekly
   AR(1) noise after October 3, preserving totals through the cutoff, and deaths are computed
   from the rescaled admissions with a perturbed P(death | hospitalized), then scaled to all

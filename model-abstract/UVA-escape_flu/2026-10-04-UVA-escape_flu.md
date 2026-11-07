@@ -6,18 +6,18 @@ National projections (sum of 49 states and DC; 300 paired trajectories per scena
 
 | Scenario | Hospital admissions | Peak weekly admissions | Peak week | Deaths (all, CDC scale) |
 |---|---|---|---|---|
-| A (optimistic coverage) | 348k (301k-423k) | 20k (17k-27k) | 2026-11-21 (2026-11-14 to 2027-02-06) | 53k (37k-79k) |
-| B (usual coverage) | 368k (319k-445k) | 21k (18k-27k) | 2026-11-21 (2026-11-14 to 2027-01-23) | 57k (39k-81k) |
-| C (no children's vaccination) | 396k (346k-478k) | 23k (19k-30k) | 2026-11-21 (2026-11-14 to 2027-01-09) | 60k (42k-89k) |
-| D (no vaccination) | 459k (400k-552k) | 27k (23k-35k) | 2026-11-21 (2026-11-14 to 2027-01-09) | 71k (50k-105k) |
+| A (optimistic coverage) | 344k (285k-399k) | 19k (14k-26k) | 2026-11-14 (2026-11-07 to 2027-02-06) | 50k (36k-72k) |
+| B (usual coverage) | 397k (331k-457k) | 22k (17k-29k) | 2026-11-21 (2026-11-14 to 2027-02-06) | 58k (42k-82k) |
+| C (no children's vaccination) | 479k (409k-546k) | 27k (21k-35k) | 2026-11-21 (2026-11-14 to 2027-01-23) | 70k (51k-98k) |
+| D (no vaccination) | 638k (547k-729k) | 36k (28k-44k) | 2026-11-28 (2026-11-14 to 2027-01-23) | 97k (72k-138k) |
 
 Paired scenario differences (per trajectory):
-- Usual vaccination (B) compared with none (D): admissions -19.7% (90%: -21.4% to -18.4%)
-- Usual vaccination (B) compared with none (D): deaths -20.8% (90%: -22.7% to -19.4%)
-- Optimistic coverage (A) compared with usual (B): admissions -5.6% (90%: -6.6% to -4.3%)
-- Optimistic coverage (A) compared with usual (B): deaths -5.5% (90%: -6.6% to -4.3%)
-- Removing children's vaccination (C) compared with usual (B): admissions +7.5% (90%: +5.8% to +9.9%)
-- Removing children's vaccination (C) compared with usual (B): deaths +6.4% (90%: +4.8% to +8.7%)
+- Usual vaccination (B) compared with none (D): admissions -38.2% (90%: -40.8% to -36.3%)
+- Usual vaccination (B) compared with none (D): deaths -40.0% (90%: -42.7% to -38.0%)
+- Optimistic coverage (A) compared with usual (B): admissions -13.4% (90%: -15.2% to -12.0%)
+- Optimistic coverage (A) compared with usual (B): deaths -13.6% (90%: -15.5% to -12.1%)
+- Removing children's vaccination (C) compared with usual (B): admissions +21.0% (90%: +18.1% to +26.4%)
+- Removing children's vaccination (C) compared with usual (B): deaths +19.0% (90%: +16.0% to +24.3%)
 
 Deaths are all influenza deaths on the scale of CDC's in-season multiplier model: the model's in-hospital deaths scaled by age to CDC's all deaths per admission (see Other Model Assumptions).
 
@@ -28,7 +28,9 @@ Calibration uses NHSN weekly influenza admissions by state, all ages, through th
 1. Retrospective fitting to previous season (2025-26). A 64-point Sobol design over 9 parameters is scored with a negative-binomial likelihood on weekly all-age admissions, plus a down-weighted (0.3) term on admissions split by subtype. Following parameters are calibrated: baseline transmissibility, seasonal amplitude, seasonal peak date and shape, background seeding, two subtype transmissibility weights and two subtype seasonal lags. Priors come from 2010-26 FluView subtype history.
 2. Real-time fitting to current season (2026-27). From the 8 best fits, candidate 2026-27 parameters are drawn: a transmissibility multiplier (0.6-1.6), seasonal peak, subtype shares and seeding windows, per-subtype immune escape (0-0.3), and, in 8 states with an early H1N1 rise, an early H1N1 seeding pulse. Priors are informed by early-season evidence through October 3 (NHSN, NSSP and subtype data, using the HHS region where state data are missing). Candidates are simulated to October 10 and weighted by a tempered likelihood against NHSN admissions for the early weeks before the cutoff, including growth over the last weeks; the weighted candidates are then resampled.
 
-The resampled members are run in full under scenario B and passed through a guardrail mechanism against past seasons. A run whose season total or peak exceeds the state's largest season since 2022-23 is deweighted (if > 1.5x) or excluded (if > 2x). A run whose admissions peak before November 1 is also excluded, since no state has peaked earlier in 2022-26 NHSN data. Sixty runs per state are kept, and these are projected under scenarios A, C and D with identical parameters.
+The resampled members are run in full under scenario B and passed through a guardrail mechanism against past seasons. A run whose season total or peak exceeds the state's largest season since 2022-23 is deweighted (if > 1.5x) or excluded (if > 2x). A run whose admissions peak before November 1 is also excluded, since no state has peaked earlier in 2022-26 NHSN data. Sixty runs per state were kept in the first version of this submission (November 5).
+
+**Update (November 6, 2026).** The vaccine was revised so that the simulated vaccine effectiveness matches the hub's 50% (see Vaccine Effectiveness and Model revisions). The stronger vaccine also shrinks the 2025-26 fit season, so the kept runs no longer fit it. Instead of recalibrating, each state's 60 runs were re-run with transmissibility (baseline and seasonal amplitude) multiplied by 1.16 and the probability of hospitalization by 1.08. In a Virginia test these factors restored the 2025-26 attack rate (1.15-1.18 across calibration runs) and admissions (1.04-1.13). The guardrail above was then re-applied to the re-run scenario B seasons. In the 16 states left with fewer than 45 runs, the surviving runs were resampled (each survivor equally, so a parameter set in proportion to how many of its runs survived) and re-simulated with the same parameters as new stochastic trajectories, then guarded again, until every state had at least 45 runs (190 new runs). The final ensemble has 45-59 runs per state (median 48). The early-season likelihood weighting was not redone. The kept runs are projected under scenarios A, C and D with identical parameters.
 
 # Model Assumptions
 ## Immunity assumptions
@@ -45,7 +47,7 @@ Infection-derived and vaccine-derived protection are separate multiplicative ter
 Immunity is continuous rather than divided into classes. Each agent has a last-infection date per subtype (3 clocks), a last-dose date and formulation, and a long-term immunity flag. After infection an agent is fully protected against that subtype for about 6 months (refractory R state, normal duration with mean 180 days, sd 30). It then returns to S with protection that wanes from 70%.
 
 ### Initial proportion of population with residual immunity from previous infections and previous seasonal vaccinations at the start of the 2026-27 season.
-The median S0 on October 4, 2026 across kept runs is 0.72 (5-95%: 0.68-0.77). State medians range from 0.69 to 0.75. By subtype the medians are H1N1 0.72, H3N2 0.71 and B 0.72. Residual immunity is therefore about 28%, ranging from 23% to 32%.
+The median S0 on October 4, 2026 across kept runs is 0.73 (5-95%: 0.68-0.76). State medians range from 0.69 to 0.76. By subtype the medians are H1N1 0.73, H3N2 0.71 and B 0.72. Residual immunity is therefore about 27%, ranging from 24% to 32%.
 
 ### How is variability in this parameter engineered, if any?
 S0 varies across runs through three parts:
@@ -57,10 +59,10 @@ S0 varies across runs through three parts:
 The infection history used to build the initial condition is the same in all runs of a state.
 
 ### Initial proportion of population with residual immunity from previous infections and previous seasonal vaccinations at the start of the 2026-27 season.
-See above: median S0 0.72 (5-95%: 0.68-0.77), so residual immunity is about 28%.
+See above: median S0 0.73 (5-95%: 0.68-0.76), so residual immunity is about 27%.
 
 ### Waning immunity throughout the season (yes, no, differs for vaccination and natural infection)
-Yes, and it differs by source. Infection-derived protection wanes exponentially with a 1-year half-life. Vaccine-derived protection wanes with a 150-day half-life. Both are further reduced by antigenic drift of about 16% per year, counted from the infection date or the vaccine formulation date. Long-term immunity (80% protection, in a fraction of adults and half as many children) does not wane.
+Yes, and it differs by source. Infection-derived protection wanes exponentially with a 1-year half-life. Vaccine-derived protection wanes with a 150-day half-life. Infection-derived protection is further reduced by antigenic drift of about 16% per year, counted from the infection date. Since the November 6 update, vaccine protection has no drift term: the hub's VE assumption already covers the match of the 2026-27 vaccine. Vaccine protection wanes only with time since the dose. Long-term immunity (80% protection, in a fraction of adults and half as many children) does not wane.
 
 ## Details on Influenza Strain(s)
 ### Does the model include distinct (sub)types, or distinct pathogens?
@@ -120,16 +122,16 @@ The early H1N1 seeding pulse is used in 8 states.
 
 ## Vaccine Effectiveness
 ### VE against infection (by age, if relevant)
-25% at full strength, at all ages, waning with a 150-day half-life.
+43% at full strength, at all ages, waning with a 150-day half-life from the dose. Because the vaccine is leaky and agents are exposed repeatedly over the season, realized VE against infection in simulation is lower: about 23% over the season in a matched-cohort analysis of simulated vaccinees (Virginia, scenario B). The first version of this submission used 25% at full strength, which also drifted with time since the formulation date; its realized VE against infection was about 10%.
 
 ### VE against hospitalization given infection (by age, if relevant)
-An additional 33% reduction in hospitalization given infection, so about 50% total against hospitalization, at all ages, with the same waning.
+The vaccine reduces the probability of symptomatic illness given infection by an additional 46% at full strength, with the same waning. Hospitalization occurs only from symptomatic infection, so there is no separate term for hospitalization given infection: VE against hospitalization equals VE against symptomatic (medically attended) illness. That is 1 - (1 - 0.43)(1 - 0.46) = 69% at full strength. Realized over the season, in the same matched-cohort analysis, it is about 49% against symptomatic illness and 52% against hospitalization, matching the hub's 50% against medically attended illness and hospitalization. The first version of this submission used 33% against hospitalization given infection on top of the infection term; its realized VE against hospitalization was about 33%.
 
 ### VE against transmission (if any effect beyond VE against infection; by age, if relevant)
 None beyond the reduction in infection.
 
 ### VE against mortality (if any effect beyond VE against infection and hospitalization)
-None beyond the reductions in infection and hospitalization.
+None beyond the reductions in infection and hospitalization. In this model all deaths arise from those that are hospitalized.
 
 ### Is the vaccine modeled a leaky or all-of-nothing (if relevant)
 Leaky.
@@ -139,10 +141,10 @@ Vaccine and infection protection are independent multiplicative terms: an agent'
 
 ## Uncertainty
 ### Summarize how uncertainty is generated within a single scenario. 1. Is there resampling of model parameters, and if so which parameters? 2. Is there additional stochasticity in the model, beyond parameter sampling?
-1. Yes. Fit-season parameters come from the 8 best fits of a 64-point Sobol design. Next-season parameters (transmissibility multiplier, seasonal peak, subtype shares, lags and seeding, immune escape, early H1N1 pulse) are drawn from priors. These are reweighted by early-season likelihood, resampled, and filtered by the guard on past-season size and peak timing, keeping 60 runs per state.
+1. Yes. Fit-season parameters come from the 8 best fits of a 64-point Sobol design. Next-season parameters (transmissibility multiplier, seasonal peak, subtype shares, lags and seeding, immune escape, early H1N1 pulse) are drawn from priors. These are reweighted by early-season likelihood, resampled, and filtered by the guard on past-season size and peak timing. After the November 6 update (re-run with the revised vaccine, guard re-applied, states below 45 runs topped up by re-simulating resampled surviving runs and guarding them again) 45-59 runs per state are kept (median 48).
 2. Yes:
    - Each simulation is stochastic: transmission, natural history, vaccination uptake and severity events.
-   - Each run is expanded to 300 trajectories per state, 5 per run, by severity replicates. The first replicate (stochastic_run 1) is the run as simulated. The others rescale admissions by drawn subtype, age and state severity multipliers and by weekly AR(1) noise from October 4 on, preserving totals through the cutoff.
+   - Each state's runs are expanded to 300 trajectories by severity replicates, ceil(300 / runs) per run (6 to 7 per run, by state). The first replicate (stochastic_run 1) is the run as simulated. The others rescale admissions by drawn subtype, age and state severity multipliers and by weekly AR(1) noise from October 4 on, preserving totals through the cutoff.
    - Deaths are computed from each trajectory's admissions with a perturbed probability of death given hospitalization and a 3-14 day delay. These in-hospital deaths are then scaled to all deaths by an age-specific ratio, with a drawn national level (log-sd 0.20, the spread across 2022-26 seasons) and age profile.
    - The same draws are used in all four scenarios, so trajectories are paired across scenarios, ages and targets (run_grouping = run, stochastic_run = replicate).
    - Severity draws have a national component shared across states within a national sample.
@@ -151,12 +153,19 @@ Vaccine and infection protection are independent multiplicative terms: an agent'
 ### Summarize important changes to the model compared to prior SMH submissions
 The first escape-flu model for a SMH submission was in 2024 and it used the same simulation engine and populations, as well as a similar disease model, however, the calibration and projection approach were a bit different.  Additionally, this escape-flu model uses 3 independent pathogen contagions (the first multi-contagion submission).  These are simultaneously simulated and the two A types have cross immunity with eachother.  Additionally, this escape-flu model uses and individualized immune history approach that allows waning to be assessed at the individual level and to vary based on source of last immunizing event.  This was adapted from the ESCAPE-COVID model submitted to COVID-19 SMH Round 20 (per-agent immune clocks, waning and escape). 
 
-Some specific changes for the flu model:
+Some specific details for the flu model:
 - three subtype contagions with cross-protection;
 - subtype- and age-specific severity from FluSurv-NET;
 - histories built from infections back-calculated from NHSN admissions;
 - cosine seasonality with subtype lags;
 - a two-stage calibration with early-season selection and a guardrail approach based on past seasons.
+
+Update of November 6, 2026 (this version replaces the projections of November 5):
+- The vaccine has no antigenic drift term; protection wanes only with time since the dose.
+- VE against infection was raised from 25% to 43% at full strength.
+- VE now acts on symptomatic illness (46%) instead of on hospitalization given infection (was 33%). Realized VE in simulation is about 23% against infection, 49% against symptomatic illness and 52% against hospitalization, versus about 10%, 10% and 33% before.
+- To keep the 2025-26 fit, the kept runs were re-run with transmissibility x1.16 and hospitalization probability x1.08, and the guardrail was re-applied. States left with fewer than 45 runs were topped up by re-simulating resampled surviving runs (same parameters, new stochastic trajectories) and guarding them again. This leaves 45-59 runs per state instead of 60 (like in the original submission).
+- The stronger vaccine corrects an under estimate and thus increases the projected effect of vaccination: scenario B versus D is -38.2% in admissions, versus -19.7% in the first version.
 
 ## Other Model Assumptions
 Deaths are scaled to the hub's target, CDC's in-season multiplier-model estimate of all flu deaths, in post-processing; no simulation was re-run. The model's in-hospital deaths (FluSurv-NET P(death | hospitalized) applied to model admissions, ~0.03 per admission) are multiplied by age-specific ratios of all deaths to in-hospital deaths (overall ~4.9x). The ratios come from CDC's in-season cumulative death estimates for 2022-23 to 2025-26 (geometric mean of the 95% bounds) divided by NHSN admissions over the same weeks, which gives 0.14 all deaths per admission (range 0.11-0.18 by season). The age profile comes from CDC's final burden estimates of deaths per hospitalization (2022-25). CDC's final estimates have been lower than its in-season ones (0.08-0.12 per admission), so our deaths may be high relative to final burden estimates. The scaling is the same in all four scenarios, so the scenario differences in deaths follow admissions. Alaska is not modelled and the national total excludes it. Infections lean toward school-age children because of the activity-based contact network; hospitalizations by age are anchored to NHSN.
