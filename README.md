@@ -600,32 +600,90 @@ University of Pittsburgh.
 ## Teams and models
 
 - [*Atlantic Coast Center for Infectious Disease Dynamics and Analytics --- FlepiMoP*](model-metadata/ACCIDDA-FlepiMoP.yml)
-    - Joshua Macdonald (Johns Hopkins University),
-      Timothy Willard (University of North Carolina at Chapel Hill),
-      Carl Pearson (University of North Carolina at Chapel Hill),
-      Joseph Lemaitre (University of North Carolina atChapel Hill), 
-      Sara Loo (Johns Hopkins University),
-      Clif McKee (JohnsHopkins University),
-      Emily Przykucki,
-      Justin Lessler (University of North Carolina at Chapel Hill), 
-      Shaun Truelove(Johns Hopkins University)
+    - Joshua C. Macdonald (International Vaccine Access Center, Department of International Health, Johns Hopkins Bloomberg School of Public Health), 
+    Carl A. B. Pearson (Department of Epidemiology, Gillings School of Global Public Health, University of North Carolina at Chapel Hill), 
+    Emiliano Lopez (University of North Carolina at Chapel Hill), 
+    Brooke Hamilton (University of North Carolina at Chapel Hill), 
+    Timothy Willard (University of North Carolina at Chapel Hill), 
+    Joseph Lemaitre (Department of Epidemiology, Gillings School of Global Public Health, University of North Carolina at Chapel Hill), 
+    Sara Loo (Johns Hopkins University), 
+    Clif McKee (Johns Hopkins University), 
+    Justin Lessler (Department of Epidemiology, Gillings School of Global Public Health, University of North Carolina at Chapel Hill), 
+    Shaun Truelove (Johns Hopkins University)
 
 - [*California Department of Public Health (CADPH) --- FluCAT*](model-metadata/CADPH-FluCAT.yaml)
     - White, Lauren (California Department of Public Health), 
-      Leon, Tomas (California Department of Public Health)
+    Leon, Tomas (California Department of Public Health)
+
+- [*CEPH Lab at Indiana University --- ASTRA_FLU*](model-metadata/CEPH-ASTRA_FLU.yaml)
+    – Marco Ajelli (Indiana University Bloomington), 
+    Pablo Valgañón (Indiana University Bloomington), 
+    Shreeya Mhade (Indiana University Bloomington), 
+    Paulo C. Ventura (Indiana University Bloomington), 
+    Maria Litvinova (Indiana University Bloomington)
+
+- [*CFA --- Scenarios*](model-metadata/CFA-Scenarios.yaml)
+    – Laura Albrecht (CDC Center for Forecasting and Outbreak Analytics), 
+    Elisha Are (CDC Center for Forecasting and Outbreak Analytics), 
+    Michael Batista (CDC Center for Forecasting and Outbreak Analytics), 
+    Kok Ben Toh (CDC Center for Forecasting and Outbreak Analytics), 
+    Thomas Hladish (CDC Center for Forecasting and Outbreak Analytics)
+
+- [*MOBS Lab at Northeastern University --- EpyStrain_Flu*](model-metadata/MOBS-EpyStrain_Flu.yaml)
+    – Alessandro Vespignani (MOBS Lab, Northeastern University), 
+    Nicolò Gozzi (ISI Foundation), 
+    Jessica T. Davis (MOBS Lab, Northeastern University), 
+    Clara Bay (MOBS Lab, Northeastern University), 
+    Remy LeWinter (MOBS Lab, Northeastern University), 
+    Minami Ueda (MOBS Lab, Northeastern University), 
+    Nima Moghaddas (MOBS Lab, Northeastern University), 
+    Peiwen Liu (MOBS Lab, Northeastern University)
+
+- [*NU --- Flu_TS*](model-metadata/NU-Flu_TS.yaml)
+    – Amanda Perofsky (Northeastern University), 
+    Cécile Viboud (Fogarty International Center, National Institutes of Health)
+
+- [*One Health Trust and Johns Hopkins University --- gpop*](model-metadata/OHT_JHU-gpop.yaml)
+    – Alexander Tulchinsky (One Health Trust), 
+    Eili Klein (One Health Trust & Johns Hopkins School of Medicine)
+
+- [*PLANET group, Northeastern University - fastODE*](model-metadata/PLANET_NEU-fastODE.yaml)
+    - Srivastava, Ajitesh (Northeastern University)
+
+- [*Predictive Science Inc --- M3*](model-metadata/PSI-M3.yaml)
+    – Turtle J (Predictive Science), Ben-Nun M (Predictive Science),
+      Riley P (Predictive Science)
+
+- [*UNC Charlotte --- Hierbin*](model-metadata/UNCC-Hierbin.yaml)
+    – Shi Chen (University of North Carolina at Charlotte)
+
+- [*University of Texas at Austin --- ImmunoSEIRS*](model-metadata/UT-ImmunoSEIRS.yaml)
+    – Shraddha Ramdas Bandekar (The University of Texas at Austin), 
+    Kaiming Bi (University of Texas Health Science Center School of Public Health), 
+    Anass Bouchnita (The University of Texas at El Paso), 
+    Spencer J. Fox (Northern Arizona University), 
+    Lauren Ancel Meyers (The University of Texas at Austin)
+
+- [*University of Texas Health Science Center at Houston - Rensselaer Polytechnic Institute - EvoSEIR*](model-metadata/UTHRPI-EvoSEIR.yml)
+    - Boya Peng (University of Texas Health Science Center at Houston), 
+    Junfeng Wu (Rensselaer Polytechnic Institute), 
+    Yinan Wang (Rensselaer Polytechnic Institute), 
+    Kaiming Bi (University of Texas Health Science Center at Houston)
+
+- [*UVA Biocomplexity Institute --- FluXSim*](model-metadata/UVA-FluXSim.yaml)
+    – Srini Venkatramanan (University of Virginia), 
+      Aniruddha Adiga (University of Virginia), 
+      Brian Klahn (University of Virginia), 
+      Bryan Lewis (University of Virginia), 
+      Madhav Marathe (University of Virginia)
+
+### Past teams and models
 
 - [*CEPH Lab at Indiana University --- MetaFlu*](model-metadata/CEPH-MetaFlu.yaml)
     – Marco Ajelli (Indiana University Bloomington),
       Shreeya Mhade (Indiana University Bloomington),
       Paulo C.Ventura (Indiana University Bloomington),
       Maria Litvinova (Indiana University Bloomington)
-
-- [*CFA --- Scenarios*](model-metadata/CFA-Scenarios.yaml)
-    – Laura Albrecht (CDC Center for Forecasting and Outbreak Analytics),
-      Elisha Are (CDC Center for Forecastingand Outbreak Analytics),
-      Michael Batista (CDC Center for Forecasting and Outbreak Analytics),
-      Kok Ben Toh(CDC Center for Forecasting and Outbreak Analytics),
-      Thomas Hladish (CDC Center for Forecasting and OutbreakAnalytics)
 
 - [*LEMMA (Part of the ACCIDDA center) --- EnsembleDTWS*](model-metadata/LEMMA-EnsembleDTWS.yaml)
     – Ajitesh Srivastava (University of Southern California)
@@ -639,34 +697,9 @@ University of Pittsburgh.
     – Amanda Perofsky (Fogarty International Center, National Institutes of Health),
       Cécile Viboud (Fogarty InternationalCenter, National Institutes of Health)
 
-- [*One Health Trust and Johns Hopkins University --- gpop*](model-metadata/OHT_JHU-gpop.yaml)
-    – Alexander Tulchinsky (One Health Trust),
-    Eili Klein (One Health Trust & Johns Hopkins School of Medicine)
-
-- [*Predictive Science Inc --- M3*](model-metadata/PSI-M3.yaml)
-    – Turtle J (Predictive Science), Ben-Nun M (Predictive Science),
-      Riley P (Predictive Science)
-
 - [*Signature Science --- SWIFT*](model-metadata/SigSci-SWIFT.yaml)
     – Benefield AE (Signature Science, LLC), 
       Nagraj VP (Signature Science, LLC)
-
-- [*UNC Charlotte --- Hierbin*](model-metadata/UNCC-Hierbin.yaml)
-    – Shi Chen (University of North Carolina at Charlotte)
-
-- [*University of Texas at Austin --- ImmunoSEIRS*](model-metadata/UT-ImmunoSEIRS.yaml)
-    – Shraddha Ramdas Bandekar (The University of Texas at Austin),
-      Kaiming Bi (University of Texas Health ScienceCenter School of Public Health),
-      Anass Bouchnita (The University of Texas at El Paso),
-      Spencer J. Fox (NorthernArizona University),
-      Lauren Ancel Meyers (The University of Texas at Austin)
-
-- [*UVA Biocomplexity Institute --- FluXSim*](model-metadata/UVA-FluXSim.yaml)
-    – Srini Venkatramanan (University of Virginia), 
-      Aniruddha Adiga (University of Virginia), 
-      Brian Klahn (University of Virginia), 
-      Bryan Lewis (University of Virginia), 
-      Madhav Marathe (University of Virginia)
 
 ## The Flu Scenario Modeling Hub Coordination Team
 
