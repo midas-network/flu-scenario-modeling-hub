@@ -33,9 +33,9 @@ df_nhsn <- extract_nhsn(hosp_report = TRUE, pathogen = "Influenza") |>
   dplyr::mutate(target = "inc hosp")
 
 # ED Visit ---------------------------------------------------------------------
-cdc_api <- "https://data.cdc.gov/api/views/"
+cdc_api <- "https://data.cdc.gov/api/v3/views/"
 df_ed_demo <- read.csv(paste0(cdc_api,
-                              "7xva-uux8/rows.csv?&accessType=DOWNLOAD")) |>
+                              "7xva-uux8/export.csv?&accessType=DOWNLOAD")) |>
   dplyr::filter(demographics_type == "Age Group", pathogen == "Influenza") |>
   dplyr::mutate(
     age_group =
@@ -52,7 +52,7 @@ df_ed_demo <- read.csv(paste0(cdc_api,
                 age_group, target)
 
 df_ed_state <- read.csv(paste0(cdc_api,
-                               "vutn-jzwm/rows.csv?&accessType=DOWNLOAD")) |>
+                               "vutn-jzwm/export.csv?&accessType=DOWNLOAD")) |>
   dplyr::filter(pathogen == "Influenza") |>
   dplyr::mutate(location = location2number[geography],
                 age_group = "0-130", target = "% ed visit") |>

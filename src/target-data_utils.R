@@ -75,6 +75,12 @@ column_selection <- function(raw, pathogen = c("COVID", "Influenza", "RSV"),
   return(col_list)
 }
 
+# Check if vector contains all numerical values (in different possible format)
+is_num_like <- function(x) {
+  x <- trimws(x[!is.na(x)])
+  length(x) > 0 && all(grepl("^'?-?[0-9,]*\\.?[0-9]+'?$", x))
+}
+
 #' Extract data from Weekly Hospital Respiratory Data (HRD) Metrics by
 #' Jurisdiction, National Healthcare Safety Network (NHSN)
 #'
@@ -109,9 +115,12 @@ extract_nhsn <- function(cdc_data_ref = "ua7e-t2fy",
                          hosp_report = TRUE, hosp_report_unit = "percent",
                          age_group = TRUE) {
   # Load data
-  down_link <- paste0("https://data.cdc.gov/api/views/", cdc_data_ref,
-                      "/rows.csv?&accessType=DOWNLOAD")
-  raw <- read.csv(down_link, check.names = FALSE)
+  down_link <- paste0("https://data.cdc.gov/api/v3/views/", cdc_data_ref,
+                      "/export.csv?&accessType=DOWNLOAD")
+  raw <-  readr::read_csv(down_link,
+                          col_types = readr::cols(.default =
+                                                    readr::col_character())) |>
+    dplyr::mutate(dplyr::across(dplyr::where(is_num_like), readr::parse_number))
 
   # Column selection
   list_col <- column_selection(raw, pathogen = pathogen, age_group = age_group,
